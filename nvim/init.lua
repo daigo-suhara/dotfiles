@@ -1,4 +1,3 @@
-require("keymaps")
-require("options")
-require("lazyvim")
-require("autocmds")
+require("dai.core")
+require("dai.lazy")
+require("dai.lsp")

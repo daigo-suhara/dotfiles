@@ -1,3 +1,5 @@
+vim.cmd("let g:netrw_liststyle = 3")
+
 -- ファイル
 vim.opt.fileencoding = "utf-8" -- UTF-8に設定
 vim.opt.swapfile = false

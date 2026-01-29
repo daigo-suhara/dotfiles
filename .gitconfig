@@ -1,3 +1,6 @@
 [user]
-	name = SuharaDaigo
+	name = Daigo Suhara
 	email = suharadaigo@gmail.com
+[core]
+	autocrlf = false
+	filemode = false
