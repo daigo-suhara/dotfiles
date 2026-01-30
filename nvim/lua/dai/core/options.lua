@@ -4,6 +4,7 @@ vim.cmd("let g:netrw_liststyle = 3")
 vim.opt.fileencoding = "utf-8" -- UTF-8に設定
 vim.opt.swapfile = false
 vim.opt.hidden = true -- バッファ切り替え時にファイルの保存不要
+vim.opt.autochdir = true
 
 -- クリップボード共有
 vim.opt.clipboard = "unnamedplus"
