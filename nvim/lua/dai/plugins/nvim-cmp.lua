@@ -2,6 +2,7 @@ return {
     "hrsh7th/nvim-cmp",
     event = "VeryLazy",
     dependencies = {
+        "hrsh7th/cmp-nvim-lsp", -- nvim-cmp source for neovim's built-in LSP
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
@@ -10,9 +11,9 @@ return {
             version = "v2.*",
             build = "make install_jsregexp",
         },
-        "saadparwaiz1/cmp_luasnip", -- for auto completion
+        "saadparwaiz1/cmp_luasnip",     -- for auto completion
         "rafamadriz/friendly-snippets", -- snippets
-        "onsails/lspkind.nvim",   -- vs_code like pictograms
+        "onsails/lspkind.nvim",         -- vs_code like pictograms
     },
 
     config = function()
@@ -44,7 +45,7 @@ return {
         })
         cmp.setup({
             window = {
-                completion = cmp.config.window.bordered(), -- 補完ウィンドウに枠線をつける
+                completion = cmp.config.window.bordered(),    -- 補完ウィンドウに枠線をつける
                 documentation = cmp.config.window.bordered(), -- ドキュメントウィンドウに枠線をつける
             },
             completion = {
@@ -92,7 +93,7 @@ return {
                 format = lspkind.cmp_format({
                     mode = "text",
                     maxwidth = 70,
-                    ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+                    ellipsis_char = "...",    -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
                     show_labelDetails = true, -- show labelDetails in menu. Disabled by default
                     preset = "codicons",
                     symbol_map = { Copilot = "" },
