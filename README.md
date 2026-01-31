@@ -32,7 +32,7 @@ experimental-features = nix-command flakes
    It is recommended to clone this into `~/dotfiles` as the configuration currently assumes this path for symlinking certain config directories.
 
    ```bash
-   git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+   git clone https://github.com/daigo-suhara/dotfiles.git ~/dotfiles
    cd ~/dotfiles
    ```
 
@@ -91,9 +91,3 @@ To update the tools and configuration:
    ```bash
    home-manager switch --flake .#suharadaigo
    ```
-
-## 📝 Customization
-
-- **Adding Packages**: Edit `home.nix` and add the package name to the `home.packages` list.
-- **Neovim**: Edit files in `nvim/`. Changes are reflected immediately as it is symlinked.
-- **WezTerm**: Edit files in `wezterm/`.

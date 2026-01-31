@@ -5,6 +5,7 @@
   environment.systemPackages = with pkgs; [
     cocoapods
     wezterm
+    google-chrome
   ];
 
   # Necessary for using flakes on this system.
