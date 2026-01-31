@@ -13,7 +13,7 @@
       theme = "robbyrussell";
     };
 
-    initExtra = ''
+    initContent = ''
       # Docker completions
       fpath=($HOME/.docker/completions $fpath)
       autoload -Uz compinit

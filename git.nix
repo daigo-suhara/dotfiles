@@ -3,10 +3,12 @@
 {
   programs.git = {
     enable = true;
-    userName = "Daigo Suhara";
-    userEmail = "suharadaigo@gmail.com";
+    settings = {
+      user = {
+        name = "Daigo Suhara";
+        email = "suharadaigo@gmail.com";
+      };
 
-    extraConfig = {
       core = {
         autocrlf = false;
         filemode = false;
