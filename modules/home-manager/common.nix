@@ -10,6 +10,7 @@
     neovim
     lazygit
     gemini-cli
+    gcc
     # Add other tools here
   ];
 
