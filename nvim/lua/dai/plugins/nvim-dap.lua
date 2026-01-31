@@ -126,11 +126,11 @@ return {
 
 			vim.keymap.set("n", "<leader>ds", dap.toggle_breakpoint, { desc = "ブレークポイントを設置" })
 			vim.keymap.set("n", "<leader>dg", dap.run_to_cursor, { desc = "カーソル位置でデバッグ" })
-			vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "デバッグを開始" })
-			vim.keymap.set("n", "<leader>di", dap.step_into)
-			vim.keymap.set("n", "<leader>do", dap.step_over)
-			vim.keymap.set("n", "<leader>dO", dap.step_out)
-			vim.keymap.set("n", "<leader>db", dap.step_back)
+			vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "デバッグを開始/再開" })
+			vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "ステップイン" })
+			vim.keymap.set("n", "<leader>do", dap.step_over, { desc = "ステップオーバー" })
+			vim.keymap.set("n", "<leader>dO", dap.step_out, { desc = "ステップアウト" })
+			vim.keymap.set("n", "<leader>db", dap.step_back, { desc = "ステップバック" })
 			vim.keymap.set("n", "<leader>dr", dap.restart, { desc = "再度デバッグを開始" })
 
 			dap.listeners.before.attach.dapui_config = function()
