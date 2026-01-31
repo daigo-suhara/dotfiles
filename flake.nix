@@ -1,5 +1,5 @@
 {
-  description = "My Home Manager configuration";
+  description = "Daigo Suhara's Nix config";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -33,7 +33,7 @@
           homeDirectory = "/Users/suharadaigo";
         };
 
-        # Linux (Generic x86_64) - You can adjust this later
+        # Linux (Generic x86_64)
         "linux_user" = mkHome {
           system = "x86_64-linux";
           username = "suharadaigo";

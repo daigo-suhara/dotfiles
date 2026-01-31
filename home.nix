@@ -7,6 +7,8 @@
     fd
     jq
     tree
+    neovim
+    lazygit
     # Add other tools here
   ];
 
