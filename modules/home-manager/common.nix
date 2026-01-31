@@ -6,7 +6,7 @@
     ripgrep
     fd
     jq
-    tree
+    git
     neovim
     lazygit
     gemini-cli
