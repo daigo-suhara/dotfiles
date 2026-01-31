@@ -1,0 +1,29 @@
+{ config, pkgs, ... }:
+
+{
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
+      theme = "robbyrussell";
+    };
+
+    initExtra = ''
+      # Docker completions
+      fpath=($HOME/.docker/completions $fpath)
+      autoload -Uz compinit
+      compinit
+
+      # Added by Antigravity
+      export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+      # chromium
+      export PATH="/Volumes/CrucialX9/Dev/depot_tools:$PATH"
+    '';
+  };
+}
