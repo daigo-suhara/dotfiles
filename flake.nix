@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,11 +17,6 @@
     brew-nix = {
       url = "github:BatteredBunny/brew-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    wezterm = {
-        url = "github:wez/wezterm?dir=nix";
-        inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -48,12 +43,11 @@
         type = "app";
         program = toString (pkgs.writeShellScript "update-script" ''
           set -e
+          export NIX_CONFIG="experimental-features = nix-command flakes"
           echo "Updating flake..."
           nix flake update
-          echo "Updating home-manager..."
-          nix run home-manager -- switch --flake .#${username}
           echo "Updating nix-darwin..."
-          nix run nix-darwin -- switch --flake .#${username}
+          sudo --preserve-env=NIX_CONFIG nix run nix-darwin -- switch --flake .#${username}
           echo "Update complete!"
         '');
       };
@@ -61,8 +55,8 @@
       darwinConfigurations."${username}" = nix-darwin.lib.darwinSystem {
         inherit system;
         specialArgs = { inherit inputs; };
-        modules = [ 
-          ./hosts/macbook/default.nix
+        modules = [
+          ./hosts/mac/default.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -79,10 +73,10 @@
         };
 
         # Linux (Generic x86_64)
-        "linux_user" = mkHome {
+        "linux" = mkHome {
           system = "x86_64-linux";
-          username = "suharadaigo";
-          homeDirectory = "/home/suharadaigo";
+          username = "${username}";
+          homeDirectory = "/home/${username}";
         };
       };
     };

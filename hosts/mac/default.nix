@@ -3,29 +3,14 @@
 {
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
-    vim
     cocoapods
-    fzf
-    opencode
-    python311
-    python313
-    stow
-    terraform
-    
-    # Install WezTerm from the flake input for the best macOS experience
-    inputs.wezterm.packages.${pkgs.system}.default
-    
-    # GUI Apps via brew-nix
-    inputs.brew-nix.packages.${pkgs.system}.arduino-ide
-    inputs.brew-nix.packages.${pkgs.system}.docker-desktop
-    inputs.brew-nix.packages.${pkgs.system}.flutter
-    pkgs.google-chrome
-    inputs.brew-nix.packages.${pkgs.system}.microsoft-excel
-    pkgs.vscode
+    wezterm
   ];
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
+
+  ids.gids.nixbld = 350;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true;
@@ -39,7 +24,7 @@
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
-  
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -60,7 +45,7 @@
     name = "suharadaigo";
     home = "/Users/suharadaigo";
   };
-  
+
   # Set the primary user for nix-darwin (required for homebrew)
   system.primaryUser = "suharadaigo";
 
