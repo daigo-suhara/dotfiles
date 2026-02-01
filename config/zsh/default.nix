@@ -15,6 +15,8 @@
 
     initContent = ''
       export PATH="/Volumes/CrucialX9/Dev/depot_tools:$PATH"
+      bindkey '^F' autosuggest-accept
+      ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#ffb6c1'
     '';
   };
 }
