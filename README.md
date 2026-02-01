@@ -16,14 +16,7 @@ Before using this configuration, ensure you have **Nix** installed.
 
 **Multi-user installation (Recommended):**
 ```bash
-sh <(curl -L https://nixos.org/nix/install)
-```
-
-**Enable Flakes:**
-If you are on a non-NixOS system, you may need to enable experimental features. Add the following to `/etc/nix/nix.conf` or `~/.config/nix/nix.conf`:
-
-```
-experimental-features = nix-command flakes
+curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 ```
 
 ## 🛠 Installation & Usage
