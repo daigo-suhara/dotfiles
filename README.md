@@ -14,7 +14,7 @@ Before using this configuration, ensure you have **Nix** installed.
 
 ### Install Nix
 
-**Multi-user installation (Recommended):**
+**Use nix-installer (Recommended):**
 ```bash
 curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 ```
@@ -30,18 +30,8 @@ curl -fsSL https://install.determinate.systems/nix | sh -s -- install
    ```
 
 2. **Apply the configuration:**
-
-   Depending on your operating system, choose the appropriate flake output.
-
-   **For macOS (Apple Silicon / aarch64):**
    ```bash
-   nix run home-manager/master -- switch --flake .#suharadaigo
-   ```
-   *Subsequent updates can be applied with `home-manager switch --flake .#daigo-suhara`*
-
-   **For Linux (x86_64):**
-   ```bash
-   nix run home-manager/master -- switch --flake .#linux_user
+   nix run .#update
    ```
 
 
