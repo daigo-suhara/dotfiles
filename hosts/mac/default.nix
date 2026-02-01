@@ -71,7 +71,7 @@
       StandardHideWidgets = true;
     };
     "com.apple.inputmethod.Kotoeri" = {
-      JIMPrefKutenToutenStyle = 3;
+        JIMPrefPunctuationTypeKey = 3;
     };
   };
 
