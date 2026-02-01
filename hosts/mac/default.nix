@@ -50,9 +50,9 @@
 
   system.defaults.NSGlobalDomain = {
     ApplePressAndHoldEnabled = false;
-    InitialKeyRepeat = 15;
-    KeyRepeat = 2;
-    "com.apple.swipescrolldirection" = false;
+    InitialKeyRepeat = 10;
+    KeyRepeat = 1;
+    "com.apple.swipescrolldirection" = true;
   };
 
   system.defaults.trackpad = {
