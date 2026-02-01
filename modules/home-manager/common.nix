@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    fish
     ripgrep
     fd
     jq
@@ -23,8 +22,5 @@
 
   # Let Home Manager manage itself
   programs.home-manager.enable = true;
-
-  programs.zsh.enable = false;
-  programs.fish.enable = true;
-
+  programs.zsh.enable = true;
 }
