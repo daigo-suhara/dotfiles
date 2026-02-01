@@ -10,6 +10,7 @@
     lazygit
     gemini-cli
     gcc
+    docker
     # Add other tools here
   ];
 

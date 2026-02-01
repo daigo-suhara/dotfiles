@@ -38,6 +38,9 @@
   # Optional: Enable TouchID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  system.keyboard.enableKeyMapping = true;
+  system.keyboard.remapCapsLockToControl = true;
+
   # Dock
   system.defaults.dock = {
     orientation = "left";
@@ -66,6 +69,9 @@
     };
     "com.apple.WindowManager" = {
       StandardHideWidgets = true;
+    };
+    "com.apple.inputmethod.Kotoeri" = {
+      JIMPrefKutenToutenStyle = 3;
     };
   };
 
