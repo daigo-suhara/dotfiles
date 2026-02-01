@@ -6,7 +6,6 @@
     cocoapods
     wezterm
     google-chrome
-    gemini-cli
   ];
 
   # If you use nix-installer
@@ -14,7 +13,7 @@
 
   ids.gids.nixbld = 350;
 
-  programs.zsh.enable = false;  
+  programs.zsh.enable = false;
   programs.fish.enable = true;
 
   # Set Git commit hash for darwin-version.
@@ -30,27 +29,48 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  fonts.packages = with pkgs; [
-    (runCommand "cica-font" {
-        src = fetchzip {
-          url = "https://github.com/miiton/Cica/releases/download/v5.0.3/Cica_v5.0.3.zip";
-          sha256 = "08yr7accwih7k37z8d19rfg8ha3j7illl5npy92d63wzc1yygl06";
-          stripRoot = false;
-        };
-      } ''
-        mkdir -p $out/share/fonts/truetype
-        cp $src/*.ttf $out/share/fonts/truetype/
-      '')
-  ];
-
   users.users.daigo-suhara = {
     name = "daigo-suhara";
     home = "/Users/daigo-suhara";
   };
-
-  # Set the primary user for nix-darwin (required for homebrew)
   system.primaryUser = "daigo-suhara";
 
   # Optional: Enable TouchID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
+
+  # Dock
+  system.defaults.dock = {
+    orientation = "left";
+    tilesize = 40;
+    autohide = true;
+    show-recents = false;
+    mineffect = "scale";
+    launchanim = true;
+  };
+
+  system.defaults.NSGlobalDomain = {
+    ApplePressAndHoldEnabled = false;
+    InitialKeyRepeat = 15;
+    KeyRepeat = 2;
+    "com.apple.swipescrolldirection" = false;
+  };
+
+  system.defaults.trackpad = {
+    Clicking = true;
+    TrackpadRightClick = true;
+  };
+
+  system.defaults.CustomUserPreferences = {
+    "com.apple.dock" = {
+      persistent-apps = [];
+    };
+  };
+
+  # Finder
+  system.defaults.finder = {
+    AppleShowAllExtensions = true;
+    AppleShowAllFiles = true;
+    ShowPathbar = true;
+    ShowStatusBar = true;
+  };
 }
