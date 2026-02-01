@@ -4,5 +4,6 @@
     ./nvim
     ./wezterm
     ./git
+    ./zsh
   ];
 }

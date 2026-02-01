@@ -8,13 +8,14 @@
     google-chrome
   ];
 
+  environment.shells = [ pkgs.fish ];
+
   # If you use nix-installer
   nix.enable = false;
 
   ids.gids.nixbld = 350;
 
   programs.zsh.enable = false;
-  programs.fish.enable = true;
 
   # Set Git commit hash for darwin-version.
   # system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -32,6 +33,7 @@
   users.users.daigo-suhara = {
     name = "daigo-suhara";
     home = "/Users/daigo-suhara";
+    shell = pkgs.fish;
   };
   system.primaryUser = "daigo-suhara";
 

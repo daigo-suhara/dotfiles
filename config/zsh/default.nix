@@ -1,0 +1,21 @@
+{ config, pkgs, ... }:
+
+{
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
+      theme = "robbyrussell";
+    };
+
+    initContent = ''
+      # chromium
+      export PATH="/Volumes/CrucialX9/Dev/depot_tools:$PATH"
+    '';
+  };
+}
