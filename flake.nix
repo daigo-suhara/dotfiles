@@ -44,11 +44,18 @@
         program = toString (pkgs.writeShellScript "update-script" ''
           set -e
           export NIX_CONFIG="experimental-features = nix-command flakes"
-          echo "Updating flake..."
+      
+          echo "--- 1/3 Updating flake locks ---"
           nix flake update
-          echo "Updating nix-darwin..."
+      
+          echo "--- 2/3 Updating nix-darwin ---"
           sudo --preserve-env=NIX_CONFIG nix run nix-darwin -- switch --flake .#${username}
-          echo "Update complete!"
+      
+          echo "--- 3/3 Updating home-manager ---"
+          # home-manager は通常 sudo 不要です
+          nix run home-manager -- switch --flake .#${username}
+      
+          echo "Successfully updated everything!"
         '');
       };
 
