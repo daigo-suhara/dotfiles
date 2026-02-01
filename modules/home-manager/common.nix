@@ -3,6 +3,7 @@
 {
   # Packages to install
   home.packages = with pkgs; [
+    fish
     ripgrep
     fd
     jq
