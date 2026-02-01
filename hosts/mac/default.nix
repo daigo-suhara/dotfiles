@@ -6,11 +6,11 @@
     cocoapods
     wezterm
     google-chrome
+    fish
   ];
 
   # If you use nix-installer
   nix.enable = false;
-
 
   ids.gids.nixbld = 350;
 
