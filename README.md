@@ -37,39 +37,13 @@ curl -fsSL https://install.determinate.systems/nix | sh -s -- install
    ```bash
    nix run home-manager/master -- switch --flake .#suharadaigo
    ```
-   *Subsequent updates can be applied with `home-manager switch --flake .#suharadaigo`*
+   *Subsequent updates can be applied with `home-manager switch --flake .#daigo-suhara`*
 
    **For Linux (x86_64):**
    ```bash
    nix run home-manager/master -- switch --flake .#linux_user
    ```
 
-## 📂 Directory Structure
-
-- **`flake.nix`**: The entry point for the Nix setup. Defines the inputs (nixpkgs, home-manager) and the output configurations for different users/systems.
-- **`home.nix`**: The main Home Manager configuration file. It:
-  - Installs packages (`neovim`, `lazygit`, `ripgrep`, etc.).
-  - Symlinks configuration directories (`nvim`, `wezterm`).
-  - Sets environment variables.
-  - Imports module-specific configs.
-- **`git.nix`**: Git configuration (user details, aliases, credential helpers).
-- **`zsh.nix`**: Zsh shell configuration, including plugins (Oh My Zsh) and init scripts.
-- **`nvim/`**: Complete Neovim configuration (Lua based). Symlinked to `~/.config/nvim`.
-- **`wezterm/`**: WezTerm configuration. Symlinked to `~/.config/wezterm`.
-
-## 📦 Managed Tools
-
-The following tools are installed and configured via this setup:
-
-- **Core**: `git`, `zsh`
-- **Editors**: `neovim` (with full Lua config)
-- **Terminal**: `wezterm` (config managed)
-- **Utilities**:
-  - `lazygit` (Git TUI)
-  - `ripgrep` (Fast grep alternative)
-  - `fd` (Find alternative)
-  - `jq` (JSON processor)
-  - `tree`
 
 ## 🔄 Updating
 
@@ -77,10 +51,5 @@ To update the tools and configuration:
 
 1. **Update Flake inputs (e.g., nixpkgs):**
    ```bash
-   nix flake update
-   ```
-
-2. **Apply changes:**
-   ```bash
-   home-manager switch --flake .#suharadaigo
+   nix run .#update
    ```
