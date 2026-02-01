@@ -19,6 +19,9 @@
     EDITOR = "nvim";
   };
 
+  # Auto Backup file
+  home.backupFileExtension = "backup";
+
   # Let Home Manager manage itself
   programs.home-manager.enable = true;
 
