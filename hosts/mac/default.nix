@@ -7,12 +7,6 @@
     wezterm
     google-chrome
   ];
-  homebrew = {
-    enable = true;
-    casks = [
-      "rustdest"
-    ];
-  }
 
   # If you use nix-installer
   nix.enable = false;
