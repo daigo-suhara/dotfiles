@@ -22,5 +22,7 @@
   # Let Home Manager manage itself
   programs.home-manager.enable = true;
 
+  programs.zsh.enable = true;
+
   home.stateVersion = "23.11";
 }
