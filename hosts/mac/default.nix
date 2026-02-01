@@ -14,6 +14,7 @@
 
   ids.gids.nixbld = 350;
 
+  programs.zsh.enable = false;  
   programs.fish.enable = true;
 
   # Set Git commit hash for darwin-version.
