@@ -13,8 +13,7 @@
       theme = "robbyrussell";
     };
 
-    initExtra = ''
-      # chromium
+    initContent = ''
       export PATH="/Volumes/CrucialX9/Dev/depot_tools:$PATH"
     '';
   };

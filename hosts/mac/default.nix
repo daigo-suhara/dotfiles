@@ -6,8 +6,13 @@
     cocoapods
     wezterm
     google-chrome
-    rustdesk
   ];
+  homebrew = {
+    enable = true;
+    casks = [
+      "rustdest"
+    ];
+  }
 
   # If you use nix-installer
   nix.enable = false;
@@ -28,6 +33,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnsupportedSystem = true;
 
   users.users.daigo-suhara = {
     name = "daigo-suhara";
