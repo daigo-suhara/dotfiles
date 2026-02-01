@@ -22,5 +22,7 @@
   # Let Home Manager manage itself
   programs.home-manager.enable = true;
 
+  home.backupFileExtension = "hm-backup";
+
   home.stateVersion = "23.11";
 }
