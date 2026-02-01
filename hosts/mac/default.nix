@@ -6,7 +6,7 @@
     cocoapods
     wezterm
     google-chrome
-    fish
+    gemini-cli
   ];
 
   # If you use nix-installer
