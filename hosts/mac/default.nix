@@ -6,6 +6,7 @@
     cocoapods
     wezterm
     google-chrome
+    rustdesk
   ];
 
   # If you use nix-installer
@@ -62,6 +63,9 @@
   system.defaults.CustomUserPreferences = {
     "com.apple.dock" = {
       persistent-apps = [];
+    };
+    "com.apple.WindowManager" = {
+      StandardHideWidgets = true;
     };
   };
 
