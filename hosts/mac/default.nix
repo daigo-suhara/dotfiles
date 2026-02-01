@@ -8,8 +8,9 @@
     google-chrome
   ];
 
-  # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
+  # If you use nix-installer
+  nix.enable = false;
+
 
   ids.gids.nixbld = 350;
 
@@ -42,13 +43,13 @@
       '')
   ];
 
-  users.users.suharadaigo = {
-    name = "suharadaigo";
-    home = "/Users/suharadaigo";
+  users.users.daigo-suhara = {
+    name = "daigo-suhara";
+    home = "/Users/daigo-suhara";
   };
 
   # Set the primary user for nix-darwin (required for homebrew)
-  system.primaryUser = "suharadaigo";
+  system.primaryUser = "daigo-suhara";
 
   # Optional: Enable TouchID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
