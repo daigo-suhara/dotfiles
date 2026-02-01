@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-  # Packages to install
   home.packages = with pkgs; [
     fish
     ripgrep
@@ -15,6 +14,8 @@
     # Add other tools here
   ];
 
+  home.stateVersion = "23.11";
+
   # Environment variables
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -26,5 +27,4 @@
   programs.zsh.enable = false;
   programs.fish.enable = true;
 
-  home.stateVersion = "23.11";
 }

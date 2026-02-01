@@ -103,6 +103,16 @@
     ];
   };
 
+  home-manager.users.daigo-suhara = {
+    dconf.settings = {
+      "org/gnome/desktop/background" = {
+        picture-uri = "file://${../../img/wallpaper.jpg}";
+        picture-uri-dark = "file://${../../img/wallpaper.jpg}";
+        picture-options = "zoom";
+      };
+    };
+  };
+
   # Install firefox.
   programs.firefox.enable = true;
 

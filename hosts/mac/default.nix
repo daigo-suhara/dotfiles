@@ -50,9 +50,9 @@
 
   system.defaults.NSGlobalDomain = {
     ApplePressAndHoldEnabled = false;
-    InitialKeyRepeat = 10;
-    KeyRepeat = 1;
-    "com.apple.swipescrolldirection" = true;
+    InitialKeyRepeat = 15;
+    KeyRepeat = 2;
+    "com.apple.swipescrolldirection" = false;
   };
 
   system.defaults.trackpad = {
@@ -73,4 +73,9 @@
     ShowPathbar = true;
     ShowStatusBar = true;
   };
+
+  system.activationScripts.postActivation.text = ''
+    echo "setting wallpaper..."
+    sudo -u daigo-suhara osascript -e 'tell application "Finder" to set desktop picture to POSIX file "${../../img/wallpaper.jpg}"'
+  '';
 }
