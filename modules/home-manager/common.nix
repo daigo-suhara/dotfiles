@@ -11,6 +11,7 @@
     gemini-cli
     gcc
     docker
+    bat
     # Add other tools here
   ];
 

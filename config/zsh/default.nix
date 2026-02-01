@@ -13,6 +13,10 @@
       theme = "robbyrussell";
     };
 
+    shellAliases = {
+        cat = "bat";
+    };
+
     initContent = ''
       export PATH="/Volumes/CrucialX9/Dev/depot_tools:$PATH"
       bindkey '^F' autosuggest-accept
