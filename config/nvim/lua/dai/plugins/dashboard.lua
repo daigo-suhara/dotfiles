@@ -4,7 +4,31 @@ return {
     config = function()
         require('dashboard').setup {
             theme = 'hyper',
+            config = {
+                header = {
+                    '',
+                    ' ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
+                    ' ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
+                    ' ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
+                    ' ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║',
+                    ' ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
+                    ' ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
+                    '',
+                },
+                footer = {},
+                shortcut = {},
+                packages = { enable = false },
+                project = { enable = true },
+            },
         }
     end,
-    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+    dependencies = {
+        {
+            'echasnovski/mini.icons',
+            config = function()
+                require('mini.icons').setup()
+                require('mini.icons').mock_nvim_web_devicons()
+            end,
+        },
+    },
 }
