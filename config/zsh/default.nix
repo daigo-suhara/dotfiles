@@ -15,6 +15,8 @@
 
     shellAliases = {
         cat = "bat";
+        lg = "lazygit";
+        v = "nvim";
     };
 
     initContent = ''
@@ -24,3 +26,4 @@
     '';
   };
 }
+

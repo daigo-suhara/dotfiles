@@ -8,10 +8,14 @@
     git
     neovim
     lazygit
+    lazydocker
     gemini-cli
     gcc
     docker
     bat
+    nil # Nix Language Server
+    #rust-bin.stable.latest.default
+    rustup
     # Add other tools here
   ];
 
