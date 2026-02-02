@@ -5,7 +5,7 @@ config.automatically_reload_config = true
 -- config.font = wezterm.font("Cica", { weight = "Bold", stretch = "Normal", style = "Normal" })
 config.font_size = 13.0
 config.use_ime = true
-config.window_background_opacity = 0.75
+config.window_background_opacity = 0.65
 config.macos_window_background_blur = 20
 
 ----------------------------------------------------
@@ -79,6 +79,6 @@ end)
 config.disable_default_key_bindings = true
 config.keys = require("keybinds").keys
 config.key_tables = require("keybinds").key_tables
-config.leader = { key = "q", mods = "CTRL", timeout_milliseconds = 2000 }
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
 
 return config

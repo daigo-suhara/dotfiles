@@ -81,6 +81,7 @@
     AppleShowAllFiles = true;
     ShowPathbar = true;
     ShowStatusBar = true;
+    QuitMenuItem = true;
   };
 
   system.activationScripts.postActivation.text = ''
