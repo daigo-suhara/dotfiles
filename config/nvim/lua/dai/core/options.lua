@@ -10,11 +10,11 @@ vim.opt.autochdir = true
 vim.opt.clipboard = "unnamedplus"
 
 -- メニューとコマンド
-vim.opt.cmdheight = 1  -- コマンドラインの表示行数
+vim.opt.cmdheight = 0  -- コマンドラインの表示行数
 vim.opt.showcmd = true -- コマンドラインに入力されたコマンドを表示
 
 -- ステータス系非表示に
-vim.opt.laststatus = 0 -- 下部にステータスラインを表示
+vim.opt.laststatus = 3 -- 下部にステータスラインを表示
 vim.opt.fillchars = { stl = "─", stlnc = "─" }
 vim.opt.statusline = "─"
 vim.o.ruler = false
@@ -40,7 +40,7 @@ vim.opt.number = true          -- 行番号を表示
 vim.opt.cursorline = false     -- 現在行ハイライト無効
 vim.opt.relativenumber = false -- 相対行番号を非表示
 vim.opt.wrap = false           -- テキストの自動折り返しを無効に
-vim.opt.showtabline = 2        -- タブラインを表示
+vim.opt.showtabline = 0        -- タブラインを非表示
 vim.opt.visualbell = true      -- ビープ音を表示する代わりに画面をフラッシュ
 vim.opt.showmatch = true       -- 対応する括弧をハイライト表示
 vim.opt.list = true            -- 不可視文字を表示

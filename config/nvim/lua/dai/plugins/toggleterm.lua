@@ -4,7 +4,7 @@ return {
     "akinsho/toggleterm.nvim",
     config = function()
         require("toggleterm").setup({
-            size = 100,
+            size = 150,
             on_open = function()
                 vim.cmd([[startinsert]])
             end,

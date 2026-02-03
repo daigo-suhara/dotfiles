@@ -14,7 +14,7 @@ return {
                     ' ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
                     ' ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
                 },
-                footer = {},
+                --footer = {},
                 shortcut = {},
                 packages = { enable = true },
                 project = { enable = true },
