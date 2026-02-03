@@ -9,6 +9,7 @@
     slack
     zoom-us
     colima
+    docker-credential-helpers
   ];
 
   # If you use nix-installer
