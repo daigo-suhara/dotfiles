@@ -32,7 +32,7 @@ To update the tools and configuration:
    nix run .#update
    ```
 
-## Set up mac
+## 🍎 Set up mac
 
 ### Docker
 Use the colima command to launch an Ubuntu VM and configure Docker.
