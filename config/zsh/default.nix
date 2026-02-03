@@ -16,6 +16,7 @@
     shellAliases = {
         cat = "bat";
         lg = "lazygit";
+        ld = "lazydocker";
         v = "nvim";
     };
 

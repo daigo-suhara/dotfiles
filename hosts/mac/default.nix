@@ -8,6 +8,7 @@
     google-chrome
     slack
     zoom-us
+    colima
   ];
 
   # If you use nix-installer

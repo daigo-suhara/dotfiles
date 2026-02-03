@@ -2,26 +2,15 @@
 
 This repository contains my personal dotfiles and development environment configuration, managed using **Nix** and **Home Manager**. It ensures a reproducible setup across different machines, specifically targeting macOS (Apple Silicon) and Linux.
 
-## 🚀 Features
-
-- **Package Management**: All core CLI tools are installed via Nix.
-- **Configuration Management**: Dotfiles for Neovim, WezTerm, Git, and Zsh are automatically linked and managed.
-- **Reproducibility**: The exact same versions of tools and configurations can be deployed on any new machine with a single command.
-
-## 📋 Prerequisites
-
-Before using this configuration, ensure you have **Nix** installed.
-
-### Install Nix
-
-**Use nix-installer (Recommended):**
-```bash
-curl -fsSL https://install.determinate.systems/nix | sh -s -- install
-```
-
 ## 🛠 Installation & Usage
+1. **Install Nix**
+   Use nix-installer (Recommended)
 
-1. **Clone the repository:**
+   ```bash
+   curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+   ```
+
+2. **Clone the repository:**
    It is recommended to clone this into `~/dotfiles` as the configuration currently assumes this path for symlinking certain config directories.
 
    ```bash
@@ -29,11 +18,10 @@ curl -fsSL https://install.determinate.systems/nix | sh -s -- install
    cd ~/dotfiles
    ```
 
-2. **Apply the configuration:**
+3. **Apply the configuration:**
    ```bash
    nix run .#update
    ```
-
 
 ## 🔄 Updating
 
@@ -43,3 +31,12 @@ To update the tools and configuration:
    ```bash
    nix run .#update
    ```
+
+## Set up mac
+
+### Docker
+Use the colima command to launch an Ubuntu VM and configure Docker.
+
+```bash
+colima start
+```

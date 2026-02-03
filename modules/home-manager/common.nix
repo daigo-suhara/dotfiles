@@ -2,19 +2,18 @@
 
 {
   home.packages = with pkgs; [
+    neovim
     ripgrep
     fd
     jq
     git
-    neovim
     lazygit
+    docker
+    docker-compose
     lazydocker
     gemini-cli
     gcc
-    docker
     bat
-    nil # Nix Language Server
-    #rust-bin.stable.latest.default
     rustup
     # Add other tools here
   ];
