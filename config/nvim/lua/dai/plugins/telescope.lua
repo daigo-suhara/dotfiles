@@ -1,7 +1,7 @@
 return {
     "nvim-telescope/telescope.nvim",
     version = '*',
-    event = "VimEnter",
+    event = "VeryLazy",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons",
@@ -26,7 +26,6 @@ return {
                 },
             },
         })
-
 
         -- set keymaps
         local keymap = vim.keymap -- for conciseness

@@ -14,7 +14,10 @@ return {
                     ' ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║',
                     ' ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
                 },
-                --footer = {},
+                footer = {
+                    "",
+                    "🪛 Sharp tools make good work.",
+                },
                 shortcut = {},
                 packages = { enable = true },
                 project = { enable = true },

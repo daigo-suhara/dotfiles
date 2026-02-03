@@ -6,6 +6,8 @@
     cocoapods
     wezterm
     google-chrome
+    slack
+    zoom-us
   ];
 
   # If you use nix-installer
