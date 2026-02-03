@@ -15,9 +15,11 @@
 
     shellAliases = {
         cat = "bat";
+        top = "btop";
         lg = "lazygit";
         ld = "lazydocker";
         v = "nvim";
+        reload = "exec $SHELL -l";
     };
 
     initContent = ''

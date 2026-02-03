@@ -14,6 +14,7 @@
     gemini-cli
     gcc
     bat
+    btop
     rustup
     # Add other tools here
   ];
