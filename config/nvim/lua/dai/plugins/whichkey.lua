@@ -6,6 +6,9 @@ return {
         vim.o.timeoutlen = 500
     end,
     opts = {
+        win = {
+            border = "rounded",
+        },
         spec = {
             { "<leader>f", group = "ファイル検索" },
             { "<leader>ff", desc = "cwd内のファイル検索" },
@@ -74,4 +77,8 @@ return {
             { "gt", desc = "型定義へ移動" },
         },
     },
+    config = function(_, opts)
+        vim.api.nvim_set_hl(0, "WhichKeyBorder", { fg = "#58A6FF" })
+        require("which-key").setup(opts)
+    end,
 }
