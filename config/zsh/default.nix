@@ -14,8 +14,10 @@
     };
 
     shellAliases = {
+        ls = "eza";
         cat = "bat";
         top = "btop";
+        ping = "gping";
         lg = "lazygit";
         ld = "lazydocker";
         v = "nvim";

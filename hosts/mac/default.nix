@@ -32,6 +32,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnsupportedSystem = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "google-chrome-144.0.7559.97"
+  ];
 
   users.users.daigo-suhara = {
     name = "daigo-suhara";

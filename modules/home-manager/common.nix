@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     neovim
     ripgrep
+    eza
     fd
     jq
     git
@@ -15,6 +16,7 @@
     gcc
     bat
     btop
+    gping
     rustup
     # Add other tools here
   ];
