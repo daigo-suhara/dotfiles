@@ -1,97 +1,98 @@
 return {
-    {
-        'neovim/nvim-lspconfig',
-        event = { "BufReadPre", "BufNewFile" },
-        dependencies = {
-            { 'j-hui/fidget.nvim', opts = {} },
-            'saghen/blink.cmp',
-        },
-        config = function()
-            local lspconfig = require('lspconfig')
+	{
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			{ "j-hui/fidget.nvim", opts = {} },
+			"saghen/blink.cmp",
+		},
+		config = function()
+			-- LspAttach オートコマンド
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("dai-lsp-attach", { clear = true }),
+				callback = function(event)
+					local map = function(keys, func, desc, mode)
+						mode = mode or "n"
+						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+					end
 
-            -- LspAttach オートコマンドでバッファごとの設定を行う
-            vim.api.nvim_create_autocmd('LspAttach', {
-                group = vim.api.nvim_create_augroup('dai-lsp-attach', { clear = true }),
-                callback = function(event)
-                    local map = function(keys, func, desc, mode)
-                        mode = mode or 'n'
-                        vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
-                    end
+					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+					map("<leader>cd", vim.lsp.buf.hover, "[C]ode [D]ocumentation", { "n", "x" })
+					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+					map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+					map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "Open [D]ocument [S]ymbols")
+					map(
+						"<leader>ws",
+						require("telescope.builtin").lsp_dynamic_workspace_symbols,
+						"Open [W]orkspace [S]ymbols"
+					)
+					map("gt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
 
-                    -- キーマップ（Telescope 連携など）
-                    map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-                    map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
-                    map('<leader>cd', vim.lsp.buf.hover, '[C]ode [D]ocumentation', { 'n', 'x' })
-                    map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-                    map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-                    map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-                    map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-                    map('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'Open [D]ocument [S]ymbols')
-                    map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open [W]orkspace [S]ymbols')
-                    map('gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+					local client = vim.lsp.get_client_by_id(event.data.client_id)
+					if client and client.supports_method("textDocument/documentHighlight") then
+						local highlight_augroup = vim.api.nvim_create_augroup("dai-lsp-highlight", { clear = false })
+						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+							buffer = event.buf,
+							group = highlight_augroup,
+							callback = vim.lsp.buf.document_highlight,
+						})
+						vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+							buffer = event.buf,
+							group = highlight_augroup,
+							callback = vim.lsp.buf.clear_references,
+						})
+					end
 
-                    local client = vim.lsp.get_client_by_id(event.data.client_id)
+					if client and client.supports_method("textDocument/inlayHint") then
+						map("<leader>th", function()
+							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+						end, "[T]oggle Inlay [H]ints")
+					end
+				end,
+			})
 
-                    -- シンボルハイライト
-                    if client and client.supports_method('textDocument/documentHighlight') then
-                        local highlight_augroup = vim.api.nvim_create_augroup('dai-lsp-highlight', { clear = false })
-                        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-                            buffer = event.buf,
-                            group = highlight_augroup,
-                            callback = vim.lsp.buf.document_highlight,
-                        })
-                        vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-                            buffer = event.buf,
-                            group = highlight_augroup,
-                            callback = vim.lsp.buf.clear_references,
-                        })
-                    end
+			-- blink.cmp との統合
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			local status_blink, blink = pcall(require, "blink.cmp")
+			if status_blink then
+				capabilities = blink.get_lsp_capabilities(capabilities)
+			end
 
-                    -- インレイヒント
-                    if client and client.supports_method('textDocument/inlayHint') then
-                        map('<leader>th', function()
-                            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-                        end, '[T]oggle Inlay [H]ints')
-                    end
-                end,
-            })
+			-- サーバー設定のテーブル
+			local servers = {
+				lua_ls = {
+					cmd = { "lua-language-server" },
+					settings = {
+						Lua = {
+							runtime = { version = "LuaJIT" },
+							diagnostics = { globals = { "vim" } },
+							workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+							completion = { callSnippet = "Replace" },
+						},
+					},
+				},
+				rust_analyzer = {
+					cmd = { "rust-analyzer" },
+				},
+				intelephense = {
+					cmd = { "intelephense", "--stdio" },
+				},
+				nil_ls = {
+					cmd = { "nil" },
+				},
+			}
 
-            -- blink.cmp との統合
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            local status_blink, blink = pcall(require, "blink.cmp")
-            if status_blink then
-                capabilities = blink.get_lsp_capabilities(capabilities)
-            end
-
-            -- サーバーごとの個別設定
-            local servers = {
-                lua_ls = {
-                    cmd = { "lua-language-server" },
-                    settings = {
-                        Lua = {
-                            runtime = { version = 'LuaJIT' },
-                            diagnostics = { globals = { 'vim' } },
-                            workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-                            completion = { callSnippet = 'Replace' },
-                        },
-                    },
-                },
-                rust_analyzer = {
-                    cmd = { "rust-analyzer" },
-                },
-                intelephense = {
-                    cmd = { "intelephense", "--stdio" },
-                },
-                nil_ls = {
-                    cmd = { "nil" },
-                },
-            }
-
-            -- 全サーバーのセットアップ
-            for name, config in pairs(servers) do
-                config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, config.capabilities or {})
-                lspconfig[name].setup(config)
-            end
-        end,
-    },
+			-- Neovim 0.11+ の新しい方式
+			for name, config in pairs(servers) do
+				config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
+				-- 設定を定義
+				vim.lsp.config(name, config)
+				-- 自動起動を有効化
+				vim.lsp.enable(name)
+			end
+		end,
+	},
 }
