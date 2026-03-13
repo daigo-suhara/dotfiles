@@ -16,6 +16,8 @@
     gcc
     ccache
     cmake
+    ninja
+    gettext
     python3
     bat
     btop
