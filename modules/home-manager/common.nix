@@ -14,10 +14,12 @@
     lazydocker
     gemini-cli
     gcc
+    ccache
+    cmake
+    python3
     bat
     btop
     gping
-    rustup
     # Add other tools here
   ];
 

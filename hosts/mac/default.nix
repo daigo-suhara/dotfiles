@@ -7,7 +7,6 @@
     wezterm
     google-chrome
     slack
-    zoom-us
     colima
     docker-credential-helpers
   ];
@@ -35,6 +34,16 @@
   nixpkgs.config.permittedInsecurePackages = [
     "google-chrome-144.0.7559.97"
   ];
+
+  homebrew = {
+    enable = true;
+    onActivation.cleanup = "zap";
+    onActivation.autoUpdate = true;
+    onActivation.upgrade = true;
+    casks = [
+      "autodesk-fusion"
+    ];
+  };
 
   users.users.daigo-suhara = {
     name = "daigo-suhara";
@@ -78,7 +87,7 @@
       StandardHideWidgets = true;
     };
     "com.apple.inputmethod.Kotoeri" = {
-        JIMPrefPunctuationTypeKey = 3;
+      JIMPrefPunctuationTypeKey = 3;
     };
   };
 
