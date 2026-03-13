@@ -24,10 +24,16 @@
     let
       system = "aarch64-darwin";
       username = "daigo-suhara";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
       mkHome = { system, username, homeDirectory, stateVersion ? "23.11" }:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
           modules = [
             ./modules/home-manager/default.nix
             {
