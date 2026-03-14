@@ -84,7 +84,7 @@ return {
 					cmd = { "nil" },
 				},
 				clangd = {
-					cmd = { "clangd", "--query-driver=" .. vim.fn.expand("$HOME") .. "/.nix-profile/bin/g++" },
+					cmd = { "clangd", "--query-driver=" .. vim.fn.expand("$HOME") .. "/.nix-profile/bin/clangd" },
 				},
 				pyright = {
 					cmd = { "pyright-langserver", "--stdio" },
