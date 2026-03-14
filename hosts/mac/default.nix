@@ -1,14 +1,9 @@
 { pkgs, inputs, ... }:
 
 {
-  # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     cocoapods
     wezterm
-    google-chrome
-    slack
-    colima
-    docker-credential-helpers
   ];
 
   # If you use nix-installer
@@ -18,11 +13,6 @@
 
   ids.gids.nixbld = 350;
 
-  # Set Git commit hash for darwin-version.
-  # system.configurationRevision = self.rev or self.dirtyRev or null;
-
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
   system.stateVersion = 4;
 
   # The platform the configuration will be used on.
@@ -31,9 +21,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnsupportedSystem = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "google-chrome-144.0.7559.97"
-  ];
 
   homebrew = {
     enable = true;
@@ -42,6 +29,9 @@
     onActivation.upgrade = true;
     casks = [
       "autodesk-fusion"
+      "docker-desktop"
+      "google-chrome"
+      "slack"
     ];
   };
 

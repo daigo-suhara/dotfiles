@@ -83,14 +83,17 @@ return {
 				nil_ls = {
 					cmd = { "nil" },
 				},
+				clangd = {
+					cmd = { "clangd", "--query-driver=" .. vim.fn.expand("$HOME") .. "/.nix-profile/bin/g++" },
+				},
+				pyright = {
+					cmd = { "pyright-langserver", "--stdio" },
+				},
 			}
 
-			-- Neovim 0.11+ の新しい方式
 			for name, config in pairs(servers) do
 				config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
-				-- 設定を定義
 				vim.lsp.config(name, config)
-				-- 自動起動を有効化
 				vim.lsp.enable(name)
 			end
 		end,

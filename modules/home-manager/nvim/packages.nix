@@ -6,9 +6,13 @@
     lua-language-server
     rust-analyzer
     nodePackages.intelephense
-    nil # Nix LSP
-    
+    nil
+    clang-tools
+    pyright
+
     # Formatters
     stylua
+    black
+    isort
   ];
 }

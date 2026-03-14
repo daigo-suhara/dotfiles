@@ -10,7 +10,7 @@ return {
 				lua = { "stylua" },
 				go = { "goimports", "gofmt" },
 				python = { "isort", "black" },
-				cpp = { "prettier" },
+				cpp = { "clang-format" },
 				json = web_formatter,
 				javascript = web_formatter,
 				javascriptreact = web_formatter,

@@ -13,7 +13,6 @@
     docker-compose
     lazydocker
     gemini-cli
-    gcc
     ccache
     cmake
     ninja
