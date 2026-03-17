@@ -4,7 +4,7 @@ This repository contains my personal dotfiles and development environment config
 
 ## 🛠 Installation & Usage
 1. **Install Nix**
-   Use nix-installer (Recommended)
+   Use nix-installer
 
    ```bash
    curl -fsSL https://install.determinate.systems/nix | sh -s -- install
