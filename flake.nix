@@ -18,24 +18,28 @@
       url = "github:BatteredBunny/brew-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix.url = "github:danth/stylix";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-darwin, stylix, ... }@inputs:
     let
-      system = "aarch64-darwin";
-      username = "daigo-suhara";
+      vars = import ./vars/default.nix;
+      system = "aarch64-darwin"; # Primary system
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-      mkHome = { system, username, homeDirectory, stateVersion ? "23.11" }:
+
+      mkHome = { system, username, homeDirectory, stateVersion ? "23.11", platform ? "base" }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
           };
+          extraSpecialArgs = { inherit vars; };
           modules = [
-            ./modules/home-manager/default.nix
+            ./home/${platform}/default.nix
             {
               home.username = username;
               home.homeDirectory = homeDirectory;
@@ -45,68 +49,104 @@
         };
     in
     {
-      apps.${system}.update = {
-        type = "app";
-        program = toString (pkgs.writeShellScript "update-script" ''
-          set -e
-          export NIX_CONFIG="experimental-features = nix-command flakes"
-      
-          echo "--- 1/3 Updating flake locks ---"
-          nix flake update
-      
-          echo "--- 2/3 Updating nix-darwin ---"
-          sudo --preserve-env=NIX_CONFIG nix run nix-darwin -- switch --flake .#${username}
-      
-          echo "--- 3/3 Updating home-manager ---"
-          # home-manager は通常 sudo 不要です
-          nix run home-manager -- switch --flake .#${username}
-      
-          echo "Successfully updated everything!"
-        '');
-      };
+      apps = 
+        let
+          mkUpdateApp = system: {
+            type = "app";
+            program = toString (pkgs.writeShellScript "update-script" ''
+              set -e
+              export NIX_CONFIG="experimental-features = nix-command flakes"
 
-      darwinConfigurations."${username}" = nix-darwin.lib.darwinSystem {
+              OS=$(uname)
+              ARCH=$(uname -m)
+
+              echo "--- 1/3 Updating flake locks ---"
+              nix flake update
+
+              if [ "$OS" = "Darwin" ]; then
+                echo "--- 2/3 Updating nix-darwin ---"
+                sudo --preserve-env=NIX_CONFIG nix run nix-darwin -- switch --flake .#${vars.username}
+              elif [ -f /etc/NIXOS ]; then
+                echo "--- 2/3 Updating NixOS ---"
+                sudo nixos-rebuild switch --flake .#nixos
+              else
+                echo "--- 2/3 Skipping system update (Unsupported OS) ---"
+              fi
+
+              echo "--- 3/3 Updating home-manager ---"
+              if [ "$OS" = "Darwin" ]; then
+                nix run home-manager -- switch --flake .#${vars.username}
+              elif [ -f /etc/NIXOS ]; then
+                # On NixOS, Home Manager is usually handled by nixos-rebuild if using the module
+                # but we can still run it separately if needed, or skip it.
+                echo "Home Manager update handled by nixos-rebuild"
+              fi
+
+              echo "Successfully updated everything!"
+            '');
+          };
+        in {
+          "aarch64-darwin".update = mkUpdateApp "aarch64-darwin";
+          "x86_64-linux".update = mkUpdateApp "x86_64-linux";
+          "aarch64-linux".update = mkUpdateApp "aarch64-linux";
+        };
+
+      darwinConfigurations."${vars.username}" = nix-darwin.lib.darwinSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs vars; isDarwin = true; };
         modules = [
-          ./hosts/mac/default.nix
+          ./hosts/darwin/macbook/default.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users."${username}" = import ./modules/home-manager/default.nix;
+            home-manager.users."${vars.username}" = import ./home/darwin/default.nix;
+            home-manager.extraSpecialArgs = { inherit vars; isDarwin = true; };
           }
         ];
       };
 
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          # system is determined by hardware-configuration.nix or hostPlatform
+          specialArgs = { inherit inputs vars; isDarwin = false; };
           modules = [
-            ./hosts/nixos/default.nix
+            ./hosts/nixos/generic/default.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users."${username}" = import ./modules/home-manager/default.nix;
+              home-manager.users."${vars.username}" = import ./home/linux/default.nix;
+              home-manager.extraSpecialArgs = { inherit vars; isDarwin = false; };
             }
           ];
         };
       };
 
       homeConfigurations = {
-        "${username}" = mkHome {
-          inherit system username;
-          homeDirectory = "/Users/${username}";
+        "${vars.username}" = mkHome {
+          inherit system;
+          username = vars.username;
+          homeDirectory = "/Users/${vars.username}";
+          platform = "darwin";
         };
 
         # Linux (Generic x86_64)
-        "linux" = mkHome {
+        "linux-x86" = mkHome {
           system = "x86_64-linux";
-          username = "${username}";
-          homeDirectory = "/home/${username}";
+          username = vars.username;
+          homeDirectory = "/home/${vars.username}";
+          platform = "linux";
+        };
+
+        # Linux (Generic aarch64)
+        "linux-arm" = mkHome {
+          system = "aarch64-linux";
+          username = vars.username;
+          homeDirectory = "/home/${vars.username}";
+          platform = "linux";
         };
       };
+
     };
 }

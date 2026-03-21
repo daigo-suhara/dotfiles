@@ -24,6 +24,7 @@
         reload = "exec $SHELL -l";
     };
 
+    # Extra configuration
     initContent = ''
       export PATH="/Volumes/CrucialX9/Dev/depot_tools:$PATH"
       bindkey '^F' autosuggest-accept
@@ -31,4 +32,3 @@
     '';
   };
 }
-

@@ -1,6 +1,13 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./nvim
+    ./git
+    ./zsh
+    ./wezterm
+  ];
+
   home.packages = with pkgs; [
     neovim
     ripgrep

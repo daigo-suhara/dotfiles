@@ -1,12 +1,15 @@
 { config, pkgs, ... }:
 
+let
+  vars = import ../../../vars/default.nix;
+in
 {
   programs.git = {
     enable = true;
     settings = {
       user = {
-        name = "Daigo Suhara";
-        email = "suharadaigo@gmail.com";
+        name = vars.userfullname;
+        email = vars.useremail;
       };
       core = {
         autocrlf = false;

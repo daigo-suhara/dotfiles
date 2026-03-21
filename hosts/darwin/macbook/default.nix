@@ -1,6 +1,14 @@
 { pkgs, inputs, ... }:
 
+let
+  vars = import ../../../vars/default.nix;
+in
 {
+  imports = [
+    inputs.stylix.darwinModules.stylix
+    ../../../modules/common/theme.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     cocoapods
     wezterm
@@ -35,11 +43,11 @@
     ];
   };
 
-  users.users.daigo-suhara = {
-    name = "daigo-suhara";
-    home = "/Users/daigo-suhara";
+  users.users."${vars.username}" = {
+    name = vars.username;
+    home = "/Users/${vars.username}";
   };
-  system.primaryUser = "daigo-suhara";
+  system.primaryUser = vars.username;
 
   # Optional: Enable TouchID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
@@ -90,8 +98,4 @@
     QuitMenuItem = true;
   };
 
-  system.activationScripts.postActivation.text = ''
-    echo "setting wallpaper..."
-    sudo -u daigo-suhara osascript -e 'tell application "Finder" to set desktop picture to POSIX file "${../../img/wallpaper.jpg}"'
-  '';
 }
