@@ -40,6 +40,7 @@ in
       "docker-desktop"
       "google-chrome"
       "slack"
+      "utm"
     ];
   };
 

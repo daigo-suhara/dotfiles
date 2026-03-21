@@ -25,18 +25,22 @@
   outputs = { self, nixpkgs, home-manager, nix-darwin, stylix, ... }@inputs:
     let
       vars = import ./vars/default.nix;
-      system = "aarch64-darwin"; # Primary system
-      pkgs = import nixpkgs {
+
+      # Supported systems for apps/homeConfigurations
+      supportedSystems = [ "aarch64-darwin" "x86_64-linux" "aarch64-linux" ];
+
+      # Helper to generate an attrset '{ "system" = f system; }' for each system
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+
+      # Standard pkgs for a given system
+      pkgsFor = system: import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
 
       mkHome = { system, username, homeDirectory, stateVersion ? "23.11", platform ? "base" }:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-          };
+          pkgs = pkgsFor system;
           extraSpecialArgs = { inherit vars; };
           modules = [
             ./home/${platform}/default.nix
@@ -49,50 +53,41 @@
         };
     in
     {
-      apps = 
-        let
-          mkUpdateApp = system: {
-            type = "app";
-            program = toString (pkgs.writeShellScript "update-script" ''
-              set -e
-              export NIX_CONFIG="experimental-features = nix-command flakes"
+      apps = forAllSystems (system: {
+        update = {
+          type = "app";
+          program = toString ((pkgsFor system).writeShellScript "update-script" ''
+            set -e
+            export NIX_CONFIG="experimental-features = nix-command flakes"
 
-              OS=$(uname)
-              ARCH=$(uname -m)
+            OS=$(uname)
 
-              echo "--- 1/3 Updating flake locks ---"
-              nix flake update
+            echo "--- 1/3 Updating flake locks ---"
+            nix flake update
 
-              if [ "$OS" = "Darwin" ]; then
-                echo "--- 2/3 Updating nix-darwin ---"
-                sudo --preserve-env=NIX_CONFIG nix run nix-darwin -- switch --flake .#${vars.username}
-              elif [ -f /etc/NIXOS ]; then
-                echo "--- 2/3 Updating NixOS ---"
-                sudo nixos-rebuild switch --flake .#nixos
-              else
-                echo "--- 2/3 Skipping system update (Unsupported OS) ---"
-              fi
+            if [ "$OS" = "Darwin" ]; then
+              echo "--- 2/3 Updating nix-darwin ---"
+              sudo --preserve-env=NIX_CONFIG nix run nix-darwin -- switch --flake .#${vars.username}
+            elif [ -f /etc/NIXOS ]; then
+              echo "--- 2/3 Updating NixOS ---"
+              sudo nixos-rebuild switch --flake .#nixos
+            else
+              echo "--- 2/3 Skipping system update (Unsupported OS) ---"
+            fi
 
-              echo "--- 3/3 Updating home-manager ---"
-              if [ "$OS" = "Darwin" ]; then
-                nix run home-manager -- switch --flake .#${vars.username}
-              elif [ -f /etc/NIXOS ]; then
-                # On NixOS, Home Manager is usually handled by nixos-rebuild if using the module
-                # but we can still run it separately if needed, or skip it.
-                echo "Home Manager update handled by nixos-rebuild"
-              fi
+            echo "--- 3/3 Updating home-manager ---"
+            if [ "$OS" = "Darwin" ]; then
+              nix run home-manager -- switch --flake .#${vars.username}
+            elif [ -f /etc/NIXOS ]; then
+              echo "Home Manager update handled by nixos-rebuild"
+            fi
 
-              echo "Successfully updated everything!"
-            '');
-          };
-        in {
-          "aarch64-darwin".update = mkUpdateApp "aarch64-darwin";
-          "x86_64-linux".update = mkUpdateApp "x86_64-linux";
-          "aarch64-linux".update = mkUpdateApp "aarch64-linux";
+            echo "Successfully updated everything!"
+          '');
         };
-
+      });
       darwinConfigurations."${vars.username}" = nix-darwin.lib.darwinSystem {
-        inherit system;
+        system = "aarch64-darwin";
         specialArgs = { inherit inputs vars; isDarwin = true; };
         modules = [
           ./hosts/darwin/macbook/default.nix
@@ -125,7 +120,7 @@
 
       homeConfigurations = {
         "${vars.username}" = mkHome {
-          inherit system;
+          system = "aarch64-darwin";
           username = vars.username;
           homeDirectory = "/Users/${vars.username}";
           platform = "darwin";
