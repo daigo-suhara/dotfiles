@@ -1,4 +1,4 @@
-{ config, pkgs, vars, ... }:
+{ config, pkgs, vars, lib, ... }:
 
 {
   # 基本設定
@@ -28,17 +28,16 @@
   # システムパッケージ
   environment.systemPackages = with pkgs; [
     wezterm
+  ] ++ (lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
     google-chrome
-  ];
+  ]);
 
   # デスクトップ環境 (GNOME)
   services.xserver.enable = true;
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+  
+  stylix.targets.qt.platform = lib.mkForce "qtct";
 
   # サウンド (Pipewire)
   services.pulseaudio.enable = false;

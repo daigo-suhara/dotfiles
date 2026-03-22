@@ -41,7 +41,7 @@
       mkHome = { system, username, homeDirectory, stateVersion ? "23.11", platform ? "base" }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor system;
-          extraSpecialArgs = { inherit vars; };
+          extraSpecialArgs = { inherit inputs vars; isDarwin = (system == "aarch64-darwin"); };
           modules = [
             ./home/${platform}/default.nix
             {
@@ -51,6 +51,21 @@
             }
           ];
         };
+
+      mkNixos = system: nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs vars; isDarwin = false; };
+        modules = [
+          ./hosts/nixos/generic/default.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."${vars.username}" = import ./home/linux/default.nix;
+            home-manager.extraSpecialArgs = { inherit inputs vars; isDarwin = false; };
+          }
+        ];
+      };
     in
     {
       apps = forAllSystems (system: {
@@ -61,6 +76,7 @@
             export NIX_CONFIG="experimental-features = nix-command flakes"
 
             OS=$(uname)
+            ARCH=$(uname -m)
 
             echo "--- 1/3 Updating flake locks ---"
             nix flake update
@@ -70,7 +86,13 @@
               sudo --preserve-env=NIX_CONFIG nix run nix-darwin -- switch --flake .#${vars.username}
             elif [ -f /etc/NIXOS ]; then
               echo "--- 2/3 Updating NixOS ---"
-              sudo nixos-rebuild switch --flake .#nixos
+              if [ "$ARCH" = "x86_64" ]; then
+                sudo nixos-rebuild switch --flake .#nixos-x86
+              elif [ "$ARCH" = "aarch64" ]; then
+                sudo nixos-rebuild switch --flake .#nixos-arm
+              else
+                sudo nixos-rebuild switch --flake .#nixos
+              fi
             else
               echo "--- 2/3 Skipping system update (Unsupported OS) ---"
             fi
@@ -86,6 +108,7 @@
           '');
         };
       });
+
       darwinConfigurations."${vars.username}" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = { inherit inputs vars; isDarwin = true; };
@@ -96,26 +119,15 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."${vars.username}" = import ./home/darwin/default.nix;
-            home-manager.extraSpecialArgs = { inherit vars; isDarwin = true; };
+            home-manager.extraSpecialArgs = { inherit inputs vars; isDarwin = true; };
           }
         ];
       };
 
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          # system is determined by hardware-configuration.nix or hostPlatform
-          specialArgs = { inherit inputs vars; isDarwin = false; };
-          modules = [
-            ./hosts/nixos/generic/default.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users."${vars.username}" = import ./home/linux/default.nix;
-              home-manager.extraSpecialArgs = { inherit vars; isDarwin = false; };
-            }
-          ];
-        };
+        nixos-x86 = mkNixos "x86_64-linux";
+        nixos-arm = mkNixos "aarch64-linux";
+        nixos = self.nixosConfigurations.nixos-x86; # Default
       };
 
       homeConfigurations = {
