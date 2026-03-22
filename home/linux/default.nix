@@ -3,6 +3,7 @@
 {
   imports = [
     ../base
+    ./gnome.nix
   ];
 
   # Linux-specific Home Manager settings
