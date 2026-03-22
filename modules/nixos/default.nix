@@ -11,7 +11,14 @@
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
-    fcitx5.addons = with pkgs; [ fcitx5-mozc ];
+    fcitx5 = {
+      waylandFrontend = true;
+      addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+        qt6Packages.fcitx5-configtool
+      ];
+    };
   };
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "ja_JP.UTF-8";
@@ -25,18 +32,25 @@
     LC_TIME = "ja_JP.UTF-8";
   };
 
+  # フォント
+  fonts.packages = with pkgs; [
+    noto-fonts-cjk-serif
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+  ];
+
   # システムパッケージ
   environment.systemPackages = with pkgs; [
     wezterm
-  ] ++ (lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
-    google-chrome
-  ]);
+    chromium
+    gnomeExtensions.kimpanel
+  ];
 
   # デスクトップ環境 (GNOME)
   services.xserver.enable = true;
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
-  
+
   stylix.targets.qt.platform = lib.mkForce "qtct";
 
   # サウンド (Pipewire)
@@ -54,10 +68,12 @@
     isNormalUser = true;
     description = vars.userfullname;
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
   };
 
   # アプリケーション
   programs.firefox.enable = true;
+  programs.zsh.enable = true;
 
   # その他
   zramSwap.enable = true;
