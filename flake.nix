@@ -127,7 +127,7 @@
       nixosConfigurations = {
         nixos-x86 = mkNixos "x86_64-linux";
         nixos-arm = mkNixos "aarch64-linux";
-        nixos = self.nixosConfigurations.nixos-x86; # Default
+        nixos = self.nixosConfigurations.nixos-arm; # Default changed to ARM
       };
 
       homeConfigurations = {

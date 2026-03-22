@@ -10,7 +10,7 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = if pkgs.stdenv.hostPlatform.isx86_64 then [ "kvm-intel" ] else [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
@@ -26,5 +26,5 @@
 
   swapDevices = [ ];
 
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 (lib.mkDefault config.hardware.enableRedistributableFirmware);
 }
