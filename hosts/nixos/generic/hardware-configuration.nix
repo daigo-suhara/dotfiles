@@ -8,23 +8,23 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
+  boot.initrd.availableKernelModules = [ "virtio_pci" "virtio_scsi" "xhci_pci" "usbhid" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = if pkgs.stdenv.hostPlatform.isx86_64 then [ "kvm-intel" ] else [ ];
+  boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/16991432-a90e-42ee-b2c2-b901d153ac00";
+    { device = "/dev/disk/by-uuid/b153e807-e0f1-41b6-92a1-6629627f53ca";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/5147-EEF7";
+    { device = "/dev/disk/by-uuid/7C87-A3F8";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices = [ ];
 
-  hardware.cpu.intel.updateMicrocode = lib.mkIf pkgs.stdenv.hostPlatform.isx86_64 (lib.mkDefault config.hardware.enableRedistributableFirmware);
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }
