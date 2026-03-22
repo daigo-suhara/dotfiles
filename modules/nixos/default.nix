@@ -60,6 +60,7 @@
   programs.firefox.enable = true;
 
   # その他
+  zramSwap.enable = true;
   services.printing.enable = true;
   networking.networkmanager.enable = true;
 }

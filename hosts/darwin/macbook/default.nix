@@ -38,9 +38,9 @@ in
     casks = [
       "autodesk-fusion"
       "docker-desktop"
+      "virtualbox"
       "google-chrome"
       "slack"
-      "utm"
     ];
   };
 
