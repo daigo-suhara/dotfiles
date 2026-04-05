@@ -41,6 +41,9 @@ in
       "virtualbox"
       "google-chrome"
       "slack"
+      "discord"
+      "orbstack"
+      "visual-studio-code"
     ];
   };
 

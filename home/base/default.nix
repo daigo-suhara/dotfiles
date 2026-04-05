@@ -15,6 +15,7 @@
     fd
     jq
     git
+    gh
     lazygit
     docker
     docker-compose

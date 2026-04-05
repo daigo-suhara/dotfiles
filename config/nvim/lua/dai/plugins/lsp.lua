@@ -89,6 +89,57 @@ return {
 				pyright = {
 					cmd = { "pyright-langserver", "--stdio" },
 				},
+				vtsls = {
+					cmd = { "vtsls", "--stdio" },
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"javascript.jsx",
+						"typescript",
+						"typescriptreact",
+						"typescript.tsx",
+					},
+				},
+				eslint = {
+					cmd = { "vscode-eslint-language-server", "--stdio" },
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"javascript.jsx",
+						"typescript",
+						"typescriptreact",
+						"typescript.tsx",
+						"vue",
+						"svelte",
+					},
+				},
+				emmet_ls = {
+					cmd = { "emmet-ls", "--stdio" },
+					filetypes = {
+						"html",
+						"typescriptreact",
+						"javascriptreact",
+						"css",
+						"sass",
+						"scss",
+						"less",
+						"svelte",
+					},
+				},
+				biome = {
+					cmd = { "biome", "lsp-proxy" },
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"javascript.jsx",
+						"typescript",
+						"typescriptreact",
+						"typescript.tsx",
+						"json",
+						"jsonc",
+						"css",
+					},
+				},
 			}
 
 			for name, config in pairs(servers) do
