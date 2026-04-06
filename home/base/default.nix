@@ -26,6 +26,7 @@
     ninja
     gettext
     python3
+    npm
     bat
     btop
     gping

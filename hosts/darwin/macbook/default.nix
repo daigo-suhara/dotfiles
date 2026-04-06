@@ -44,6 +44,7 @@ in
       "discord"
       "orbstack"
       "visual-studio-code"
+      "adobe-creative-cloud"
     ];
   };
 
