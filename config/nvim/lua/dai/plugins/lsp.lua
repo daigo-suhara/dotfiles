@@ -32,7 +32,7 @@ return {
 					map("gt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
 
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
-					if client and client.supports_method("textDocument/documentHighlight") then
+					if client and client:supports_method("textDocument/documentHighlight") then
 						local highlight_augroup = vim.api.nvim_create_augroup("dai-lsp-highlight", { clear = false })
 						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 							buffer = event.buf,
@@ -46,7 +46,7 @@ return {
 						})
 					end
 
-					if client and client.supports_method("textDocument/inlayHint") then
+					if client and client:supports_method("textDocument/inlayHint") then
 						map("<leader>th", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 						end, "[T]oggle Inlay [H]ints")
@@ -82,6 +82,22 @@ return {
 				},
 				nil_ls = {
 					cmd = { "nil" },
+				},
+				gopls = {
+					cmd = { "gopls" },
+					settings = {
+						gopls = {
+							hints = {
+								assignVariableTypes = true,
+								compositeLiteralFields = true,
+								compositeLiteralTypes = true,
+								constantValues = true,
+								functionTypeParameters = true,
+								parameterNames = true,
+								rangeVariableTypes = true,
+							},
+						},
+					},
 				},
 				clangd = {
 					cmd = { "clangd", "--query-driver=" .. vim.fn.expand("$HOME") .. "/.nix-profile/bin/clangd" },

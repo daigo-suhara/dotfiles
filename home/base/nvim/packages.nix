@@ -13,11 +13,14 @@
     typescript
     vscode-langservers-extracted
     emmet-ls
+    gopls
+    delve
 
     # Formatters
     stylua
     black
     isort
     biome
+    gotools
   ];
 }

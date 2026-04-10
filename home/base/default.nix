@@ -21,11 +21,13 @@
     docker-compose
     lazydocker
     gemini-cli
+    claude-code
     ccache
     cmake
     ninja
     gettext
     python3
+    go
     nodejs
     bat
     btop
