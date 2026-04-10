@@ -4,6 +4,8 @@
 [core]
 	autocrlf = false
 	filemode = false
+[commit]
+	template = ~/.gitmessage
 [color]
 	ui = true
 [credential "https://android.googlesource.com"]

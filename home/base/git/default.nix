@@ -6,6 +6,7 @@ in
 {
   programs.git = {
     enable = true;
+    signing.format = null;
     settings = {
       user = {
         name = vars.userfullname;
@@ -15,8 +16,13 @@ in
         autocrlf = false;
         filemode = false;
       };
+      commit = {
+        template = "~/.gitmessage";
+      };
       color.ui = true;
     };
   };
+
+  home.file.".gitmessage".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.gitmessage";
 }
 

@@ -6,6 +6,7 @@
     ./git
     ./zsh
     ./wezterm
+    ./lazygit
   ];
 
   home.packages = with pkgs; [
@@ -16,7 +17,6 @@
     jq
     git
     gh
-    lazygit
     docker
     docker-compose
     lazydocker
@@ -30,12 +30,18 @@
     go
     nodejs
     bat
+    delta
     btop
     gping
     # Add other tools here
   ];
 
   home.stateVersion = "23.11";
+
+  gtk = {
+    enable = true;
+    gtk4.theme = null;
+  };
 
   # Environment variables
   home.sessionVariables = {

@@ -79,19 +79,19 @@
             ARCH=$(uname -m)
 
             echo "--- 1/3 Updating flake locks ---"
-            nix flake update
+            nix flake update --quiet
 
             if [ "$OS" = "Darwin" ]; then
               echo "--- 2/3 Updating nix-darwin ---"
-              sudo --preserve-env=NIX_CONFIG nix run nix-darwin -- switch --flake .#${vars.username}
+              sudo --preserve-env=NIX_CONFIG,HOME nix run nix-darwin -- switch --flake .#${vars.username} --impure
             elif [ -f /etc/NIXOS ]; then
               echo "--- 2/3 Updating NixOS ---"
               if [ "$ARCH" = "x86_64" ]; then
-                sudo nixos-rebuild switch --flake .#nixos-x86
+                sudo nixos-rebuild switch --flake .#nixos-x86 --impure
               elif [ "$ARCH" = "aarch64" ]; then
-                sudo nixos-rebuild switch --flake .#nixos-arm
+                sudo nixos-rebuild switch --flake .#nixos-arm --impure
               else
-                sudo nixos-rebuild switch --flake .#nixos
+                sudo nixos-rebuild switch --flake .#nixos --impure
               fi
             else
               echo "--- 2/3 Skipping system update (Unsupported OS) ---"
@@ -99,7 +99,7 @@
 
             echo "--- 3/3 Updating home-manager ---"
             if [ "$OS" = "Darwin" ]; then
-              nix run home-manager -- switch --flake .#${vars.username}
+              echo "Home Manager update handled by nix-darwin"
             elif [ -f /etc/NIXOS ]; then
               echo "Home Manager update handled by nixos-rebuild"
             fi
