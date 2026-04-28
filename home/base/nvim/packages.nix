@@ -21,6 +21,5 @@
     black
     isort
     biome
-    gotools
   ];
 }

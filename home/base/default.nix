@@ -10,6 +10,7 @@
   ];
 
   home.packages = with pkgs; [
+    ansible
     neovim
     ripgrep
     eza
