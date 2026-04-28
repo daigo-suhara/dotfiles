@@ -11,6 +11,7 @@
 
   home.packages = with pkgs; [
     ansible
+    terraform
     neovim
     ripgrep
     eza
