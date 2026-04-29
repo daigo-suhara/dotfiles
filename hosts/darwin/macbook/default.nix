@@ -42,7 +42,6 @@ in
       "google-chrome"
       "slack"
       "discord"
-      "orbstack"
       "visual-studio-code"
       "adobe-creative-cloud"
     ];
