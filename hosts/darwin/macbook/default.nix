@@ -37,13 +37,12 @@ in
     onActivation.upgrade = true;
     casks = [
       "autodesk-fusion"
-      "docker-desktop"
-      "virtualbox"
       "google-chrome"
       "slack"
       "discord"
       "visual-studio-code"
       "adobe-creative-cloud"
+      "docker-desktop"
     ];
   };
 
