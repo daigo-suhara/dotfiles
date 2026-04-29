@@ -12,6 +12,9 @@
   home.packages = with pkgs; [
     ansible
     terraform
+    kind
+    kubernetes-helm
+    clusterctl
     neovim
     ripgrep
     eza
