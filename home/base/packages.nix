@@ -33,6 +33,7 @@
     go
     nodejs
     protobuf
+    sqlc
 
     # Terminal utilities
     bat

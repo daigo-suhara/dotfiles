@@ -85,8 +85,16 @@ return {
 				},
 				gopls = {
 					cmd = { "gopls" },
+					filetypes = { "go", "gomod", "gowork", "gotmpl" },
 					settings = {
 						gopls = {
+							completeUnimported = true,
+							usePlaceholders = true,
+							staticcheck = true,
+							analyses = {
+								unusedparams = true,
+								unusedwrite = true,
+							},
 							hints = {
 								assignVariableTypes = true,
 								compositeLiteralFields = true,
