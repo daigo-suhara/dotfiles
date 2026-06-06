@@ -30,6 +30,7 @@
     ninja
     gettext
     python3
+    grpc-tools
     go
     nodejs
     protobuf
