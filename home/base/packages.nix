@@ -33,7 +33,6 @@
     grpc-tools
     go
     nodejs
-    protobuf
     sqlc
 
     # Terminal utilities
