@@ -1,8 +1,14 @@
 { pkgs, inputs, lib, isDarwin, ... }:
 
+let
+  cica = import ./cica-font.nix { inherit pkgs; };
+in
+
 {
   config = lib.mkMerge [
     {
+      fonts.packages = [ cica ];
+
       stylix = {
         enable = true;
         image = ../../img/wallpaper.jpg;
@@ -13,8 +19,8 @@
         
         fonts = {
           monospace = {
-            package = pkgs.nerd-fonts.jetbrains-mono;
-            name = "JetBrainsMono Nerd Font";
+            package = cica;
+            name = "Cica";
           };
           sansSerif = {
             package = pkgs.dejavu_fonts;

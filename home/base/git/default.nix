@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
+{ config, vars, ... }:
 
-let
-  vars = import ../../../vars/default.nix;
-in
 {
   programs.git = {
     enable = true;
@@ -25,4 +22,3 @@ in
 
   home.file.".gitmessage".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.gitmessage";
 }
-

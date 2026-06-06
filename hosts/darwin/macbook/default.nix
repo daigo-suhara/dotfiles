@@ -1,8 +1,5 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, vars, ... }:
 
-let
-  vars = import ../../../vars/default.nix;
-in
 {
   imports = [
     inputs.stylix.darwinModules.stylix
@@ -35,14 +32,18 @@ in
     onActivation.cleanup = "zap";
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
+    onActivation.extraFlags = [ "--force-cleanup" ];
     casks = [
       "autodesk-fusion"
+      "flutter"
       "google-chrome"
       "slack"
       "discord"
       "visual-studio-code"
       "adobe-creative-cloud"
       "docker-desktop"
+      "codex"
+      "android-studio"
     ];
   };
 

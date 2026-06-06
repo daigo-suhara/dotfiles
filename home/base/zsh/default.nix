@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   programs.zsh = {
@@ -14,19 +14,20 @@
     };
 
     shellAliases = {
-        ls = "eza";
-        cat = "bat";
-        top = "btop";
-        ping = "gping";
-        lg = "lazygit";
-        ld = "lazydocker";
-        v = "nvim";
-        reload = "exec $SHELL -l";
+      ls = "eza";
+      cat = "bat";
+      top = "btop";
+      ping = "gping";
+      lg = "lazygit";
+      ld = "lazydocker";
+      v = "nvim";
+      reload = "exec $SHELL -l";
     };
 
     # Extra configuration
     initContent = ''
       export PATH="/Volumes/CrucialX9/Dev/depot_tools:$PATH"
+
       bindkey '^F' autosuggest-accept
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#ffb6c1'
     '';

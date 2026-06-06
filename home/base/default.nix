@@ -1,51 +1,18 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   imports = [
+    ./packages.nix
     ./nvim
     ./git
     ./zsh
     ./wezterm
+    ./yazi
     ./lazygit
   ];
 
-  home.packages = with pkgs; [
-    ansible
-    terraform
-    kind
-    kubernetes-helm
-    clusterctl
-    neovim
-    ripgrep
-    eza
-    fd
-    jq
-    git
-    gh
-    docker
-    docker-compose
-    lazydocker
-    gemini-cli
-    claude-code
-    ccache
-    cmake
-    ninja
-    gettext
-    python3
-    go
-    nodejs
-    bat
-    delta
-    btop
-    gping
-    # Add other tools here
-  ];
-
-  home.stateVersion = "23.11";
-
   gtk = {
     enable = true;
-    gtk4.theme = null;
   };
 
   # Environment variables

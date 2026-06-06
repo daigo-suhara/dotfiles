@@ -2,7 +2,10 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.automatically_reload_config = true
--- config.font = wezterm.font("Cica", { weight = "Bold", stretch = "Normal", style = "Normal" })
+config.font = wezterm.font_with_fallback({
+    "JetBrains Mono",
+    "Cica",
+})
 config.font_size = 13.0
 config.use_ime = true
 config.window_background_opacity = 0.75

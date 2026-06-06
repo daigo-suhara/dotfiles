@@ -2,15 +2,15 @@
   description = "Daigo Suhara's Nix config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-25.11";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-darwin = {
-      url = "github:LnL7/nix-darwin";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -19,119 +19,31 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix";
+    stylix.url = "github:nix-community/stylix/release-25.11";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, stylix, ... }@inputs:
+  outputs = { nixpkgs, home-manager, nix-darwin, ... }@inputs:
     let
       vars = import ./vars/default.nix;
-
-      # Supported systems for apps/homeConfigurations
-      supportedSystems = [ "aarch64-darwin" "x86_64-linux" "aarch64-linux" ];
-
-      # Helper to generate an attrset '{ "system" = f system; }' for each system
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-
-      # Standard pkgs for a given system
-      pkgsFor = system: import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
-      mkHome = { system, username, homeDirectory, stateVersion ? "23.11", platform ? "base" }:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor system;
-          extraSpecialArgs = { inherit inputs vars; isDarwin = (system == "aarch64-darwin"); };
-          modules = [
-            ./home/${platform}/default.nix
-            {
-              home.username = username;
-              home.homeDirectory = homeDirectory;
-              home.stateVersion = stateVersion;
-            }
-          ];
-        };
-
-      mkNixos = system: nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs vars; isDarwin = false; };
-        modules = [
-          ./hosts/nixos/generic/default.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users."${vars.username}" = import ./home/linux/default.nix;
-            home-manager.extraSpecialArgs = { inherit inputs vars; isDarwin = false; };
-          }
-        ];
+      helpers = import ./lib {
+        inherit inputs nixpkgs home-manager nix-darwin vars;
       };
     in
     {
-      apps = forAllSystems (system: {
-        update = {
-          type = "app";
-          program = toString ((pkgsFor system).writeShellScript "update-script" ''
-            set -e
-            export NIX_CONFIG="experimental-features = nix-command flakes"
-
-            OS=$(uname)
-            ARCH=$(uname -m)
-
-            echo "--- 1/3 Updating flake locks ---"
-            nix flake update --quiet
-
-            if [ "$OS" = "Darwin" ]; then
-              echo "--- 2/3 Updating nix-darwin ---"
-              sudo --preserve-env=NIX_CONFIG,HOME nix run nix-darwin -- switch --flake .#${vars.username} --impure
-            elif [ -f /etc/NIXOS ]; then
-              echo "--- 2/3 Updating NixOS ---"
-              if [ "$ARCH" = "x86_64" ]; then
-                sudo nixos-rebuild switch --flake .#nixos-x86 --impure
-              elif [ "$ARCH" = "aarch64" ]; then
-                sudo nixos-rebuild switch --flake .#nixos-arm --impure
-              else
-                sudo nixos-rebuild switch --flake .#nixos --impure
-              fi
-            else
-              echo "--- 2/3 Skipping system update (Unsupported OS) ---"
-            fi
-
-            echo "--- 3/3 Updating home-manager ---"
-            if [ "$OS" = "Darwin" ]; then
-              echo "Home Manager update handled by nix-darwin"
-            elif [ -f /etc/NIXOS ]; then
-              echo "Home Manager update handled by nixos-rebuild"
-            fi
-
-            echo "Successfully updated everything!"
-          '');
-        };
+      apps = helpers.forAllSystems (system: {
+        update = helpers.mkUpdateApp system;
       });
 
-      darwinConfigurations."${vars.username}" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = { inherit inputs vars; isDarwin = true; };
-        modules = [
-          ./hosts/darwin/macbook/default.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users."${vars.username}" = import ./home/darwin/default.nix;
-            home-manager.extraSpecialArgs = { inherit inputs vars; isDarwin = true; };
-          }
-        ];
-      };
+      darwinConfigurations."${vars.username}" = helpers.mkDarwin;
 
       nixosConfigurations = {
-        nixos-x86 = mkNixos "x86_64-linux";
-        nixos-arm = mkNixos "aarch64-linux";
-        nixos = self.nixosConfigurations.nixos-arm; # Default changed to ARM
+        nixos-x86 = helpers.mkNixos "x86_64-linux";
+        nixos-arm = helpers.mkNixos "aarch64-linux";
+        nixos = helpers.mkNixos "aarch64-linux";
       };
 
       homeConfigurations = {
-        "${vars.username}" = mkHome {
+        "${vars.username}" = helpers.mkHome {
           system = "aarch64-darwin";
           username = vars.username;
           homeDirectory = "/Users/${vars.username}";
@@ -139,7 +51,7 @@
         };
 
         # Linux (Generic x86_64)
-        "linux-x86" = mkHome {
+        "linux-x86" = helpers.mkHome {
           system = "x86_64-linux";
           username = vars.username;
           homeDirectory = "/home/${vars.username}";
@@ -147,7 +59,7 @@
         };
 
         # Linux (Generic aarch64)
-        "linux-arm" = mkHome {
+        "linux-arm" = helpers.mkHome {
           system = "aarch64-linux";
           username = vars.username;
           homeDirectory = "/home/${vars.username}";
