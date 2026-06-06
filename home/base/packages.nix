@@ -29,6 +29,7 @@
     cmake
     ninja
     gettext
+    buf
     python3
     grpc-tools
     go
