@@ -1,6 +1,6 @@
 return {
     "hrsh7th/nvim-cmp",
-    event = "VeryLazy",
+    event = "InsertEnter",
     dependencies = {
         "hrsh7th/cmp-nvim-lsp", -- nvim-cmp source for neovim's built-in LSP
         "hrsh7th/cmp-buffer",

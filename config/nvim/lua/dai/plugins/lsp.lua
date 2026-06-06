@@ -4,7 +4,6 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{ "j-hui/fidget.nvim", opts = {} },
-			"saghen/blink.cmp",
 		},
 		config = function()
 			-- LspAttach オートコマンド
@@ -54,11 +53,11 @@ return {
 				end,
 			})
 
-			-- blink.cmp との統合
+			-- cmp との統合
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			local status_blink, blink = pcall(require, "blink.cmp")
-			if status_blink then
-				capabilities = blink.get_lsp_capabilities(capabilities)
+			local status_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+			if status_cmp_nvim_lsp then
+				capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 			end
 
 			-- サーバー設定のテーブル
