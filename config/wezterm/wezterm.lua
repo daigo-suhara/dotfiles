@@ -7,6 +7,8 @@ config.font = wezterm.font_with_fallback({
     "Cica",
 })
 config.font_size = 13.0
+config.initial_cols = 120
+config.initial_rows = 40
 config.use_ime = true
 config.window_background_opacity = 0.75
 config.macos_window_background_blur = 20
