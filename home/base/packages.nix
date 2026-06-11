@@ -25,6 +25,7 @@
     claude-code
 
     # Build and language tooling
+    gcc
     ccache
     cmake
     ninja

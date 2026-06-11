@@ -7,7 +7,6 @@
     rust-analyzer
     intelephense
     nil
-    clang-tools
     pyright
     vtsls
     typescript

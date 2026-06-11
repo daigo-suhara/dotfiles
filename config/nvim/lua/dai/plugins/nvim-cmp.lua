@@ -28,8 +28,6 @@ return {
         -- 開いているファイルのスニペットを編集
         vim.keymap.set("n", "<leader>se", require("luasnip.loaders").edit_snippet_files, { desc = "Edit snippets" })
 
-        require("luasnip.loaders.from_vscode").load({ paths = { "~/.config/nvim/my_snippets" } })
-
         cmp.setup.cmdline(":", {
             mapping = cmp.mapping.preset.cmdline({
                 ["<CR>"] = cmp.mapping.confirm({ select = false }),
