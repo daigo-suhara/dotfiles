@@ -107,6 +107,9 @@ return {
 						},
 					},
 				},
+				clangd = {
+					cmd = { "clangd", "--query-driver=" .. vim.fn.expand("$HOME") .. "/.nix-profile/bin/g++" },
+				},
 				pyright = {
 					cmd = { "pyright-langserver", "--stdio" },
 				},
