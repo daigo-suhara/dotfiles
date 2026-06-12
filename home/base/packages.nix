@@ -29,6 +29,8 @@
     ccache
     cmake
     ninja
+    ac-library
+    python3Packages.online-judge-tools
     gettext
     buf
     python3
