@@ -21,9 +21,7 @@ return {
         local luasnip = require("luasnip")
         local lspkind = require("lspkind")
 
-        -- 補完ウィンドウの枠線の色を変更
         vim.api.nvim_set_hl(0, "CmpNormal", { bg = "NONE" })
-        vim.api.nvim_set_hl(0, "CmpFloatBorder", { fg = "#58A6FF" })
 
         -- 開いているファイルのスニペットを編集
         vim.keymap.set("n", "<leader>se", require("luasnip.loaders").edit_snippet_files, { desc = "Edit snippets" })
@@ -49,11 +47,11 @@ return {
             window = {
                 completion = cmp.config.window.bordered({
                     border = "rounded",
-                    winhighlight = "Normal:CmpNormal,FloatBorder:CmpFloatBorder,CursorLine:PmenuSel,Search:None",
+                    winhighlight = "Normal:CmpNormal,CursorLine:PmenuSel,Search:None",
                 }),
                 documentation = cmp.config.window.bordered({
                     border = "rounded",
-                    winhighlight = "Normal:CmpNormal,FloatBorder:CmpFloatBorder,CursorLine:PmenuSel,Search:None",
+                    winhighlight = "Normal:CmpNormal,CursorLine:PmenuSel,Search:None",
                 }),
             },
             completion = {

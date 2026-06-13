@@ -17,8 +17,6 @@ return {
 					end
 
 					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-					map("<leader>cd", vim.lsp.buf.hover, "[C]ode [D]ocumentation", { "n", "x" })
 					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 					map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
