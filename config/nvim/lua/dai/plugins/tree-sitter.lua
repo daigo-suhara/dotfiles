@@ -1,16 +1,14 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     branch = "master",
-    event = { "BufReadPost", "BufNewFile" },
+    lazy = false,
     build = ":TSUpdate",
     dependencies = {
         "windwp/nvim-ts-autotag",
     },
     config = function()
         require("nvim-treesitter").setup({
-            highlight = { enable = true },
-            indent = { enable = true },
-            autotag = { enable = true },
+            auto_install = true,
             ensure_installed = {
                 "c",
                 "cpp",
@@ -29,5 +27,6 @@ return {
                 "vim",
             },
         })
+
     end,
 }
