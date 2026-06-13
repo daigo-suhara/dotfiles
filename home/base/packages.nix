@@ -25,6 +25,7 @@
     claude-code
 
     # Build and language tooling
+    clang-tools
     gcc
     ccache
     cmake
