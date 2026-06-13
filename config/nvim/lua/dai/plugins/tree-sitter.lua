@@ -7,7 +7,9 @@ return {
         "windwp/nvim-ts-autotag",
     },
     config = function()
-        require("nvim-treesitter").setup({
+        require("nvim-treesitter.configs").setup({
+            highlight = { enable = true },
+            indent = { enable = true },
             auto_install = true,
             ensure_installed = {
                 "c",
