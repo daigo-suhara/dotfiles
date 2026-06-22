@@ -44,6 +44,7 @@
       "docker-desktop"
       "codex"
       "android-studio"
+      "bambu-studio"
     ];
   };
 
