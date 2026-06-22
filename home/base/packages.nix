@@ -19,6 +19,7 @@
     # Containers
     docker-compose
     lazydocker
+    devpod
 
     # AI / assistant tools
     gemini-cli

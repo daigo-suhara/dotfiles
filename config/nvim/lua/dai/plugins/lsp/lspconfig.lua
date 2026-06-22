@@ -106,7 +106,8 @@ return {
 					},
 				},
 				clangd = {
-					cmd = { "clangd", "--query-driver=" .. vim.fn.exepath("g++") },
+					cmd = { "clangd" },
+					filetypes = { "c", "cpp" },
 				},
 				pyright = {
 					cmd = { "pyright-langserver", "--stdio" },
