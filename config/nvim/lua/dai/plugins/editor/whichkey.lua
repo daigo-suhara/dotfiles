@@ -26,13 +26,8 @@ return {
             { "<leader>db", desc = "ステップバック" },
             { "<leader>dr", desc = "再度デバッグを開始" },
 
-            { "<leader>t", group = "ターミナル/ツール" },
-            { "<leader>th", desc = "インレイヒント切替" },
-            { "<leader>to", desc = "新しいタブ" },
-            { "<leader>tx", desc = "タブを閉じる" },
-            { "<leader>tn", desc = "次のタブ" },
-            { "<leader>tp", desc = "前のタブ" },
-            { "<leader>tf", desc = "現在のバッファを新しいタブで開く" },
+            { "<leader>t", desc = "ターミナル" },
+            { "<leader>ih", desc = "インレイヒント切替" },
 
             { "<leader>T", group = "テスト" },
             { "<leader>Tn", desc = "カーソルのテストを実行" },

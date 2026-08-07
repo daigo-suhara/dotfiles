@@ -4,11 +4,16 @@ return {
     "akinsho/toggleterm.nvim",
     config = function()
         require("toggleterm").setup({
-            size = 150,
-            on_open = function()
-                vim.cmd([[startinsert]])
+            size = function(term)
+                if term.direction == "horizontal" then
+                    return math.floor(vim.o.lines * 0.35)
+                elseif term.direction == "vertical" then
+                    return math.floor(vim.o.columns * 0.4)
+                end
             end,
+            start_in_insert = true,
             direction = "float",
+            open_mapping = [[<c-w>]],
         })
         local Terminal = require("toggleterm.terminal").Terminal
         local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
@@ -25,7 +30,6 @@ return {
         function _G.set_terminal_keymaps()
             local opts = { buffer = 0 }
             vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
-            vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]])
         end
 
         -- if you only want these mappings for toggle term use term://*toggleterm#* instead
@@ -34,7 +38,7 @@ return {
 
     keys = {
         {
-            "<leader>tt",
+            "<leader>t",
             function()
                 require("toggleterm").toggle(0)
             end,

@@ -50,6 +50,7 @@ vim.opt.scrolloff = 15         -- 上下から15行まで行ったら自動で�
 vim.opt.winblend = 0       -- ウィンドウの不透明度
 vim.opt.pumblend = 0       -- ポップアップメニューの不透明度
 vim.opt.signcolumn = "yes" -- 行数の横にサインカラムを表示
+vim.o.winborder = "rounded" -- フロートウィンドウのデフォルト枠線
 
 vim.api.nvim_create_autocmd("ColorScheme", {
     callback = function()

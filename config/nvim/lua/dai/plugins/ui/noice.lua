@@ -18,6 +18,14 @@ return {
             notify = {
                 view = "mini",
             },
+            views = {
+                hover = {
+                    border = {
+                        style = "rounded",
+                        padding = { 0, 1 },
+                    },
+                },
+            },
             lsp = {
                 view = "notify",
                 progress = {
