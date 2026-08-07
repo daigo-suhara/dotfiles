@@ -88,6 +88,7 @@
     };
     "com.apple.WindowManager" = {
       StandardHideWidgets = true;
+      EnableStandardClickToShowDesktop = false;
     };
     "com.apple.inputmethod.Kotoeri" = {
       JIMPrefPunctuationTypeKey = 3;
