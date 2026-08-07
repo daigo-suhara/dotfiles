@@ -106,7 +106,7 @@ return {
 					},
 				},
 				clangd = {
-					cmd = { "clangd" },
+					cmd = { "/usr/bin/clangd" },
 					filetypes = { "c", "cpp" },
 				},
 				pyright = {
