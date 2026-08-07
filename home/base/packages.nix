@@ -20,6 +20,7 @@
     docker-compose
     lazydocker
     devpod
+    k9s
 
     # AI / assistant tools
     gemini-cli
@@ -31,8 +32,6 @@
     ccache
     cmake
     ninja
-    ac-library
-    python3Packages.online-judge-tools
     gettext
     buf
     python3
