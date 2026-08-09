@@ -5,7 +5,6 @@
     # Core tools
     ansible
     terraform
-    kubernetes-helm
 
     # Editor and search tooling
     neovim
@@ -21,8 +20,13 @@
     lazydocker
     devpod
     k9s
+    kubernetes-helm
 
-    # AI / assistant tools
+    # Security
+    rustscan
+    nmap
+
+    # AI
     gemini-cli
     claude-code
 

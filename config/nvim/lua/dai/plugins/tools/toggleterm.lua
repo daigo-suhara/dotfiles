@@ -13,7 +13,6 @@ return {
             end,
             start_in_insert = true,
             direction = "float",
-            open_mapping = [[<c-w>]],
         })
         local Terminal = require("toggleterm.terminal").Terminal
         local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
@@ -30,6 +29,7 @@ return {
         function _G.set_terminal_keymaps()
             local opts = { buffer = 0 }
             vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+            vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
         end
 
         -- if you only want these mappings for toggle term use term://*toggleterm#* instead
@@ -44,6 +44,13 @@ return {
             end,
             noremap = true,
             desc = "ターミナル",
+        },
+        {
+            "<C-t>",
+            "<cmd>ToggleTerm<cr>",
+            mode = { "n", "t" },
+            noremap = true,
+            desc = "ターミナル切替",
         },
         {
             "<leader>lg",

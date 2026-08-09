@@ -10,6 +10,10 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("n", "<leader>w", ":wq<CR>", { desc = "Save and exit" })
 keymap.set("n", "q", ":q<CR>", { desc = "Exit" })
 
+-- half-page scrolling
+keymap.set("n", "<S-j>", "<C-d>", { desc = "Scroll down half a page" })
+keymap.set("n", "<S-k>", "<C-u>", { desc = "Scroll up half a page" })
+
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
