@@ -1,6 +1,13 @@
 { ... }:
 
 {
+  # Zsh and directory navigation
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [ "--cmd cd" ];
+  };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;

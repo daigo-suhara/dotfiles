@@ -14,58 +14,42 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    brew-nix = {
-      url = "github:BatteredBunny/brew-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stylix.url = "github:nix-community/stylix/release-25.11";
   };
 
   outputs = { nixpkgs, home-manager, nix-darwin, ... }@inputs:
     let
-      vars = import ./vars/default.nix;
-      helpers = import ./lib {
-        inherit inputs nixpkgs home-manager nix-darwin vars;
+      user = import ./user.nix;
+      pkgs = import nixpkgs {
+        system = "aarch64-darwin";
+        config.allowUnfree = true;
       };
     in
     {
-      apps = helpers.forAllSystems (system: {
-        update = helpers.mkUpdateApp system;
-      });
-
-      darwinConfigurations."${vars.username}" = helpers.mkDarwin;
-
-      nixosConfigurations = {
-        nixos-x86 = helpers.mkNixos "x86_64-linux";
-        nixos-arm = helpers.mkNixos "aarch64-linux";
-        nixos = helpers.mkNixos "aarch64-linux";
+      darwinConfigurations."${user.username}" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit inputs user; };
+        modules = [
+          ./hosts/macbook.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."${user.username}" = import ./home/home.nix;
+            home-manager.extraSpecialArgs = { inherit inputs user; };
+          }
+        ];
       };
 
-      homeConfigurations = {
-        "${vars.username}" = helpers.mkHome {
-          system = "aarch64-darwin";
-          username = vars.username;
-          homeDirectory = "/Users/${vars.username}";
-          platform = "darwin";
-        };
-
-        # Linux (Generic x86_64)
-        "linux-x86" = helpers.mkHome {
-          system = "x86_64-linux";
-          username = vars.username;
-          homeDirectory = "/home/${vars.username}";
-          platform = "linux";
-        };
-
-        # Linux (Generic aarch64)
-        "linux-arm" = helpers.mkHome {
-          system = "aarch64-linux";
-          username = vars.username;
-          homeDirectory = "/home/${vars.username}";
-          platform = "linux";
-        };
+      apps.aarch64-darwin.update = {
+        type = "app";
+        program = toString (pkgs.writeShellScript "update" ''
+          set -e
+          export NIX_CONFIG="experimental-features = nix-command flakes"
+          nix flake update --quiet
+          sudo -H --preserve-env=NIX_CONFIG nix run nix-darwin -- switch --flake .#${user.username} --impure
+        '');
+        meta.description = "Update flake inputs and rebuild macOS";
       };
-
     };
 }

@@ -1,4 +1,4 @@
-{ config, vars, ... }:
+{ config, user, ... }:
 
 {
   programs.git = {
@@ -6,8 +6,8 @@
     signing.format = null;
     settings = {
       user = {
-        name = vars.userfullname;
-        email = vars.useremail;
+        name = user.userfullname;
+        email = user.useremail;
       };
       core = {
         autocrlf = false;

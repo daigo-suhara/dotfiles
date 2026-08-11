@@ -1,6 +1,7 @@
 { ... }:
 
 {
+  # Lazygit workflow customizations
   programs.lazygit = {
     enable = true;
     settings = {

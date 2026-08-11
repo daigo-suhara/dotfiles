@@ -1,10 +1,55 @@
-{ pkgs, inputs, vars, ... }:
+{ pkgs, inputs, user, ... }:
 
+let
+  cica = import ../cica-font.nix { inherit pkgs; };
+  wallpaperImage = ../img/wallpaper.jpg;
+  setWallpaperScript = pkgs.writeTextFile {
+    name = "set-wallpaper.swift";
+    text = ''
+      import AppKit
+      let url = URL(fileURLWithPath: "${wallpaperImage}")
+      let workspace = NSWorkspace.shared
+      for screen in NSScreen.screens {
+        try? workspace.setDesktopImageURL(url, for: screen, options: [:])
+      }
+    '';
+  };
+in
 {
   imports = [
     inputs.stylix.darwinModules.stylix
-    ../../../modules/common/theme.nix
   ];
+
+  fonts.packages = [ cica ];
+
+  stylix = {
+    enable = true;
+    image = wallpaperImage;
+    base16Scheme = "${inputs.stylix.inputs.tinted-schemes}/base16/catppuccin-mocha.yaml";
+    opacity.terminal = 0.9;
+    fonts = {
+      monospace = {
+        package = cica;
+        name = "Cica";
+      };
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
+    };
+  };
+
+  launchd.user.agents.set-wallpaper = {
+    serviceConfig = {
+      Label = "com.user.set-wallpaper";
+      ProgramArguments = [ "/usr/bin/swift" "${setWallpaperScript}" ];
+      RunAtLoad = true;
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     cocoapods
@@ -48,11 +93,11 @@
     ];
   };
 
-  users.users."${vars.username}" = {
-    name = vars.username;
-    home = "/Users/${vars.username}";
+  users.users."${user.username}" = {
+    name = user.username;
+    home = "/Users/${user.username}";
   };
-  system.primaryUser = vars.username;
+  system.primaryUser = user.username;
 
   # Optional: Enable TouchID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;

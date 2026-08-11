@@ -1,5 +1,6 @@
 { pkgs }:
 
+# Cica is distributed as a zip rather than through nixpkgs.
 pkgs.stdenvNoCC.mkDerivation {
   pname = "cica";
   version = "5.0.3";

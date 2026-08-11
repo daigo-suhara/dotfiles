@@ -1,6 +1,6 @@
 # Dotfiles managed by Nix
 
-This repository contains my personal dotfiles and development environment configuration, managed using **Nix** and **Home Manager**. It ensures a reproducible setup across different machines, specifically targeting macOS (Apple Silicon) and Linux.
+This repository contains my personal macOS (Apple Silicon) configuration, managed with **Nix**, **nix-darwin**, and **Home Manager**.
 
 ## 🛠 Installation & Usage
 1. **Install Nix**
