@@ -6,8 +6,8 @@ config.font = wezterm.font_with_fallback({
 	"Cica",
 })
 config.font_size = 15.0
-config.initial_cols = 160
-config.initial_rows = 50
+config.initial_cols = 170
+config.initial_rows = 55
 config.use_ime = true
 config.window_background_opacity = 0.75
 config.macos_window_background_blur = 20
@@ -21,8 +21,6 @@ config.window_decorations = "RESIZE"
 config.show_tabs_in_tab_bar = true
 -- タブが一つの時は非表示
 config.hide_tab_bar_if_only_one_tab = true
--- falseにするとタブバーの透過が効かなくなる
--- config.use_fancy_tab_bar = false
 
 -- タブバーの透過
 config.window_frame = {
@@ -37,7 +35,6 @@ config.window_background_gradient = {
 
 -- タブの追加ボタンを非表示
 config.show_new_tab_button_in_tab_bar = false
--- nightlyのみ使用可能
 -- タブの閉じるボタンを非表示
 config.show_close_tab_button_in_tabs = false
 
@@ -49,9 +46,7 @@ config.colors = {
 }
 
 -- タブの形をカスタマイズ
--- タブの左側の装飾
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
--- タブの右側の装飾
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
@@ -59,7 +54,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	local foreground = "#FFFFFF"
 	local edge_background = "none"
 	if tab.is_active then
-		background = "#ae8b2d"
+		background = "#8f75c7"
 		foreground = "#FFFFFF"
 	end
 	local edge_foreground = background
