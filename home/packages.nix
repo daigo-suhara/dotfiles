@@ -20,6 +20,8 @@
     lazydocker
     devpod
     k9s
+    kubectl
+    kubectx
     kubernetes-helm
 
     # Security
