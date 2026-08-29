@@ -22,6 +22,7 @@
     k9s
     kubectl
     kubectx
+    kind
     kubernetes-helm
 
     # Security
