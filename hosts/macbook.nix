@@ -2,18 +2,6 @@
 
 let
   cica = import ../cica-font.nix { inherit pkgs; };
-  wallpaperImage = ../img/wallpaper.jpg;
-  setWallpaperScript = pkgs.writeTextFile {
-    name = "set-wallpaper.swift";
-    text = ''
-      import AppKit
-      let url = URL(fileURLWithPath: "${wallpaperImage}")
-      let workspace = NSWorkspace.shared
-      for screen in NSScreen.screens {
-        try? workspace.setDesktopImageURL(url, for: screen, options: [:])
-      }
-    '';
-  };
 in
 {
   imports = [
@@ -24,7 +12,6 @@ in
 
   stylix = {
     enable = true;
-    image = wallpaperImage;
     base16Scheme = "${inputs.stylix.inputs.tinted-schemes}/base16/catppuccin-mocha.yaml";
     opacity.terminal = 0.9;
     fonts = {
@@ -40,14 +27,6 @@ in
         package = pkgs.dejavu_fonts;
         name = "DejaVu Serif";
       };
-    };
-  };
-
-  launchd.user.agents.set-wallpaper = {
-    serviceConfig = {
-      Label = "com.user.set-wallpaper";
-      ProgramArguments = [ "/usr/bin/swift" "${setWallpaperScript}" ];
-      RunAtLoad = true;
     };
   };
 
@@ -88,7 +67,6 @@ in
       "adobe-creative-cloud"
       "docker-desktop"
       "codex"
-      "android-studio"
       "bambu-studio"
     ];
   };
