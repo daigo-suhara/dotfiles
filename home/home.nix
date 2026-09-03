@@ -1,11 +1,12 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
+    inputs.nixvim.homeModules.nixvim
     ./packages.nix
     ./shell.nix
     ./git.nix
-    ./nvim.nix
+    ./nixvim.nix
     ./wezterm.nix
     ./yazi.nix
     ./lazygit.nix

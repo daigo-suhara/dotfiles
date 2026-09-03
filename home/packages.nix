@@ -7,7 +7,6 @@
     terraform
 
     # Editor and search tooling
-    neovim
     ripgrep
     eza
     fd
@@ -24,6 +23,7 @@
     kubectx
     kind
     kubernetes-helm
+    kustomize
 
     # Security
     rustscan
@@ -68,8 +68,6 @@
     gopls
     delve
     stylua
-    black
-    isort
     biome
   ];
 }
