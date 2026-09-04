@@ -6,8 +6,8 @@
     settings.defaults = {
       path_display = "smart";
       mappings.i = {
-        "<C-k>" = "require('telescope.actions').move_selection_previous";
-        "<C-j>" = "require('telescope.actions').move_selection_next";
+        "<C-k>" = "move_selection_previous";
+        "<C-j>" = "move_selection_next";
       };
     };
   };

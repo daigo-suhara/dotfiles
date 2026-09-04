@@ -1,14 +1,11 @@
 { pkgs, inputs, user, ... }:
 
-let
-  cica = import ../cica-font.nix { inherit pkgs; };
-in
 {
   imports = [
     inputs.stylix.darwinModules.stylix
   ];
 
-  fonts.packages = [ cica ];
+  fonts.packages = [ pkgs.monaspace ];
 
   stylix = {
     enable = true;
@@ -16,8 +13,8 @@ in
     opacity.terminal = 0.9;
     fonts = {
       monospace = {
-        package = cica;
-        name = "Cica";
+        package = pkgs.monaspace;
+        name = "Monaspace Neon";
       };
       sansSerif = {
         package = pkgs.dejavu_fonts;
