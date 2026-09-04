@@ -54,20 +54,5 @@
     gping
     yazi
     firebase-tools
-
-    # Neovim tooling
-    lua-language-server
-    rust-analyzer
-    intelephense
-    nil
-    pyright
-    vtsls
-    typescript
-    vscode-langservers-extracted
-    emmet-ls
-    gopls
-    delve
-    stylua
-    biome
   ];
 }

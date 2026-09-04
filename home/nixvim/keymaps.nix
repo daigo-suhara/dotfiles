@@ -20,7 +20,7 @@
     { mode = [ "n" "t" ]; key = "<C-l>"; action = "<cmd>wincmd l<CR>"; }
     { mode = [ "n" "t" ]; key = "<C-t>"; action = "<cmd>ToggleTerm<CR>"; }
     { mode = "n"; key = "<leader>t"; action = "<cmd>ToggleTerm direction=float<CR>"; }
-    { mode = "n"; key = "<leader>lg"; action = "<cmd>2TermExec cmd='lazygit' direction=float<CR>"; }
+    { mode = "n"; key = "<leader>lg"; action = "<cmd>2TermExec cmd='lazygit; exit' direction=float<CR>"; }
     { mode = "n"; key = "<leader>ld"; action = "<cmd>TermExec cmd='lazydocker' direction=float<CR>"; }
     { mode = "n"; key = "-"; action = "<cmd>Oil<CR>"; }
     { mode = "n"; key = "<leader>ff"; action = "<cmd>Telescope find_files<CR>"; }
