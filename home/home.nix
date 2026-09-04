@@ -8,6 +8,7 @@
     ./git.nix
     ./nixvim.nix
     ./wezterm.nix
+    ./vscode.nix
     ./yazi.nix
     ./lazygit.nix
   ];

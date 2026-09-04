@@ -1,0 +1,47 @@
+{
+  "workbench.colorTheme": "GitHub Dark Default",
+  //"workbench.activityBar.location": "hidden",
+  //"workbench.editor.showTabs": "single",
+  //"workbench.statusBar.visible": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.tips.enabled": false,
+  "editor.minimap.enabled": false,
+  "breadcrumbs.enabled": false,
+  "workbench.sideBar.location": "right",
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.hidesExplorerArrows": true,
+  "workbench.tree.enableStickyScroll": false,
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.tree.indent": 8,
+  "explorer.compactFolders": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "window.customTitleBarVisibility": "never",
+  //"window.titleBarStyle": "native",
+  "editor.cursorBlinking": "solid",
+  "editor.cursorStyle": "line",
+  "workbench.colorCustomizations": {
+    "editorCursor.background": "#000000",
+  },
+  "editor.hover.enabled": "off",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.defaultFormatter": null,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.organizeImports": "always"
+  },
+  "editor.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "vim.easymotion": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/.idea": true
+  },
+}
+
