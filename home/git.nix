@@ -16,6 +16,7 @@
       commit = {
         template = "~/.gitmessage";
       };
+      format.signOff = true;
       color.ui = true;
     };
   };

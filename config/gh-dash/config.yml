@@ -1,0 +1,101 @@
+prSections:
+  - title: My Pull Requests
+    filters: is:open author:@me
+    type: null
+  - title: Needs My Review
+    filters: is:open review-requested:@me
+    type: null
+  - title: Involved
+    filters: is:open involves:@me -author:@me
+    type: null
+issuesSections:
+  - title: My Issues
+    filters: is:open author:@me
+  - title: Assigned
+    filters: is:open assignee:@me
+  - title: Involved
+    filters: is:open involves:@me -author:@me
+repo:
+  branchesRefetchIntervalSeconds: 30
+  prsRefetchIntervalSeconds: 60
+defaults:
+  preview:
+    open: true
+    width: 50
+  prsLimit: 20
+  prApproveComment: LGTM
+  issuesLimit: 20
+  view: prs
+  layout:
+    prs:
+      updatedAt:
+        width: 5
+      createdAt:
+        width: 5
+      repo:
+        width: 20
+      author:
+        width: 15
+      authorIcon:
+        hidden: false
+      assignees:
+        width: 20
+        hidden: true
+      base:
+        width: 15
+        hidden: true
+      lines:
+        width: 15
+    issues:
+      updatedAt:
+        width: 5
+      createdAt:
+        width: 5
+      repo:
+        width: 15
+      creator:
+        width: 10
+      creatorIcon:
+        hidden: false
+      assignees:
+        width: 20
+        hidden: true
+  refetchIntervalMinutes: 30
+keybindings:
+  universal: []
+  issues: []
+  prs: []
+  branches: []
+repoPaths: {}
+theme:
+  ui:
+    sectionsShowCount: true
+    table:
+      showSeparator: true
+      compact: false
+  colors:
+    text:
+      primary: "#f0f6fc"
+      secondary: "#8b949e"
+      inverted: "#0d1117"
+      faint: "#8b949e"
+      warning: "#f85149"
+      success: "#3fb950"
+      actor: "#a5d6ff"
+    border:
+      primary: "#58a6ff"
+      secondary: "#30363d"
+      faint: "#21262d"
+    inline:
+      icons:
+        newcontributor: "#d2a8ff"
+        contributor: "#79c0ff"
+        collaborator: "#ffa657"
+        member: "#3fb950"
+        owner: "#f0883e"
+        unknownrole: "#8b949e"
+pager:
+  diff: ""
+confirmQuit: false
+showAuthorIcons: true
+smartFilteringAtLaunch: true

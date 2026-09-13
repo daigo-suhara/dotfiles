@@ -5,17 +5,11 @@
     inputs.stylix.darwinModules.stylix
   ];
 
-  fonts.packages = [ pkgs.monaspace ];
-
   stylix = {
     enable = true;
     base16Scheme = "${inputs.stylix.inputs.tinted-schemes}/base16/catppuccin-mocha.yaml";
     opacity.terminal = 0.9;
     fonts = {
-      monospace = {
-        package = pkgs.monaspace;
-        name = "Monaspace Neon";
-      };
       sansSerif = {
         package = pkgs.dejavu_fonts;
         name = "DejaVu Sans";
@@ -55,6 +49,7 @@
     onActivation.upgrade = true;
     onActivation.extraFlags = [ "--force-cleanup" ];
     casks = [
+      "font-cica"
       "autodesk-fusion"
       "flutter"
       "google-chrome"

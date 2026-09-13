@@ -11,6 +11,7 @@
     ./vscode.nix
     ./yazi.nix
     ./lazygit.nix
+    ./gh-dash.nix
   ];
 
   gtk.enable = true;

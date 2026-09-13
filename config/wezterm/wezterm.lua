@@ -3,12 +3,12 @@ local config = wezterm.config_builder()
 
 config.automatically_reload_config = true
 config.font = wezterm.font_with_fallback({
-	"Monaspace Neon",
+	"Cica",
 })
 config.color_scheme = "GitHub Dark"
-config.font_size = 12.0
-config.initial_cols = 170
-config.initial_rows = 55
+config.font_size = 13.0
+config.initial_cols = 200
+config.initial_rows = 65
 config.use_ime = true
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 20
