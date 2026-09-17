@@ -17,11 +17,6 @@
           }
         ];
       };
-      explorer = {
-        enabled = true;
-        replace_netrw = true;
-        trash = true;
-      };
       gitbrowse.enabled = true;
       image.enabled = true;
       indent.enabled = true;

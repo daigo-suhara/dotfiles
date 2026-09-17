@@ -27,7 +27,7 @@
     { mode = "n"; key = "<leader>gp"; action = "<cmd>Octo pr list<CR>"; options.desc = "GitHub pull requests"; }
     { mode = [ "n" "x" ]; key = "<leader>gb"; action = "<cmd>lua Snacks.gitbrowse()<CR>"; options.desc = "Git browse"; }
     { mode = "n"; key = "<leader>dv"; action = "<cmd>DapViewOpen<CR>"; options.desc = "Debug view"; }
-    { mode = "n"; key = "<leader>e"; action = "<cmd>lua Snacks.explorer()<CR>"; options.desc = "File explorer"; }
+    { mode = "n"; key = "<leader>e"; action = "<cmd>Yazi<CR>"; options.desc = "Yazi"; }
     { mode = "n"; key = "<leader>ff"; action = "<cmd>lua Snacks.picker.files()<CR>"; options.desc = "Files"; }
     { mode = "n"; key = "<leader>fr"; action = "<cmd>lua Snacks.picker.recent()<CR>"; options.desc = "Recent files"; }
     { mode = "n"; key = "<leader>fb"; action = "<cmd>lua Snacks.picker.buffers()<CR>"; options.desc = "Buffers"; }
