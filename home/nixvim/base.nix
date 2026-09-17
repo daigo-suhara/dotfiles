@@ -19,22 +19,31 @@
   extraConfigVim = ''
     highlight Normal guibg=NONE ctermbg=NONE
     highlight NormalFloat guibg=NONE ctermbg=NONE
-    highlight FloatBorder guifg=#58A6FF
-    highlight WinSeparator guifg=#58A6FF
-    highlight VertSplit guifg=#58A6FF
-    function! s:link_float_borders() abort
-      for group in ["TelescopeBorder", "TelescopePromptBorder", "TelescopeResultsBorder", "TelescopePreviewBorder", "NoiceCmdlinePopupBorder", "NoicePopupmenuBorder", "WhichKeyBorder", "CmpBorder"]
-        execute "highlight! link " . group . " FloatBorder"
-      endfor
-    endfunction
-    call s:link_float_borders()
+    highlight StatusLine guibg=#30363D
+    highlight StatusLineNC guibg=#30363D
+    highlight FloatBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+    highlight TelescopeBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+    highlight TelescopePromptBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+    highlight TelescopeResultsBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+    highlight TelescopePreviewBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+    highlight NoiceCmdlinePopupBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+    highlight NoicePopupmenuBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+    highlight WhichKeyBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+    highlight CmpBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
     augroup NixvimBorders
       autocmd!
       autocmd ColorScheme * highlight! PmenuSel guifg=#FFFFFF guibg=#30363D ctermfg=White ctermbg=DarkGray
-      autocmd ColorScheme * highlight! FloatBorder guifg=#58A6FF
-      autocmd ColorScheme * highlight! WinSeparator guifg=#58A6FF
-      autocmd ColorScheme * highlight! VertSplit guifg=#58A6FF
-      autocmd ColorScheme * call s:link_float_borders()
+      autocmd ColorScheme * highlight! StatusLine guibg=#30363D
+      autocmd ColorScheme * highlight! StatusLineNC guibg=#30363D
+      autocmd ColorScheme * highlight! FloatBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+      autocmd ColorScheme * highlight! TelescopeBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+      autocmd ColorScheme * highlight! TelescopePromptBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+      autocmd ColorScheme * highlight! TelescopeResultsBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+      autocmd ColorScheme * highlight! TelescopePreviewBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+      autocmd ColorScheme * highlight! NoiceCmdlinePopupBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+      autocmd ColorScheme * highlight! NoicePopupmenuBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+      autocmd ColorScheme * highlight! WhichKeyBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+      autocmd ColorScheme * highlight! CmpBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
     augroup END
     highlight Pmenu guibg=NONE ctermbg=NONE
     highlight PmenuSel guifg=#FFFFFF guibg=#30363D ctermfg=White ctermbg=DarkGray
