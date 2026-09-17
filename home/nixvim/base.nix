@@ -23,15 +23,15 @@
     highlight StatusLineNC guifg=#58A6FF guibg=NONE gui=NONE cterm=NONE
     highlight WinSeparator guifg=#58A6FF
     highlight VertSplit guifg=#58A6FF
-    highlight FloatBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-    highlight TelescopeBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-    highlight TelescopePromptBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-    highlight TelescopeResultsBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-    highlight TelescopePreviewBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-    highlight NoiceCmdlinePopupBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-    highlight NoicePopupmenuBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-    highlight WhichKeyBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-    highlight CmpBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+    highlight FloatBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+    highlight TelescopeBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+    highlight TelescopePromptBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+    highlight TelescopeResultsBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+    highlight TelescopePreviewBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+    highlight NoiceCmdlinePopupBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+    highlight NoicePopupmenuBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+    highlight WhichKeyBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+    highlight CmpBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
     augroup NixvimBorders
       autocmd!
       autocmd ColorScheme * highlight! PmenuSel guifg=#FFFFFF guibg=#30363D ctermfg=White ctermbg=DarkGray
@@ -39,15 +39,15 @@
       autocmd ColorScheme * highlight! StatusLineNC guifg=#58A6FF guibg=NONE gui=NONE cterm=NONE
       autocmd ColorScheme * highlight! WinSeparator guifg=#58A6FF
       autocmd ColorScheme * highlight! VertSplit guifg=#58A6FF
-      autocmd ColorScheme * highlight! FloatBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-      autocmd ColorScheme * highlight! TelescopeBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-      autocmd ColorScheme * highlight! TelescopePromptBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-      autocmd ColorScheme * highlight! TelescopeResultsBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-      autocmd ColorScheme * highlight! TelescopePreviewBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-      autocmd ColorScheme * highlight! NoiceCmdlinePopupBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-      autocmd ColorScheme * highlight! NoicePopupmenuBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-      autocmd ColorScheme * highlight! WhichKeyBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
-      autocmd ColorScheme * highlight! CmpBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
+      autocmd ColorScheme * highlight! FloatBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+      autocmd ColorScheme * highlight! TelescopeBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+      autocmd ColorScheme * highlight! TelescopePromptBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+      autocmd ColorScheme * highlight! TelescopeResultsBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+      autocmd ColorScheme * highlight! TelescopePreviewBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+      autocmd ColorScheme * highlight! NoiceCmdlinePopupBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+      autocmd ColorScheme * highlight! NoicePopupmenuBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+      autocmd ColorScheme * highlight! WhichKeyBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
+      autocmd ColorScheme * highlight! CmpBorder guifg=#58A6FF guibg=NONE ctermfg=Blue ctermbg=NONE
     augroup END
     highlight Pmenu guibg=NONE ctermbg=NONE
     highlight PmenuSel guifg=#FFFFFF guibg=#30363D ctermfg=White ctermbg=DarkGray
