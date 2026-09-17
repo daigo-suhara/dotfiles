@@ -17,8 +17,8 @@
           "<S-Tab>" = "cmp.mapping.select_prev_item()";
         };
         completion.completeopt = "menu,menuone,preview,noselect";
-        window.completion = { border = "rounded"; winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None"; };
-        window.documentation = { border = "rounded"; winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,Search:None"; };
+        window.completion = { border = "rounded"; winhighlight = "Normal:CmpNormal,CursorLine:PmenuSel,Search:None"; };
+        window.documentation = { border = "rounded"; winhighlight = "Normal:CmpNormal,Search:None"; };
       };
     };
     cmp-nvim-lsp.enable = true;

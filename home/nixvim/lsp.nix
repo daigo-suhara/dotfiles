@@ -3,13 +3,13 @@
 {
   lsp.keymaps = [
     { key = "<leader>rn"; lspBufAction = "rename"; options.desc = "Rename symbol"; }
-    { key = "gr"; action = "<cmd>Telescope lsp_references<CR>"; }
-    { key = "gI"; action = "<cmd>Telescope lsp_implementations<CR>"; }
-    { key = "gd"; action = "<cmd>Telescope lsp_definitions<CR>"; }
+    { key = "gr"; action = "<cmd>lua Snacks.picker.lsp_references()<CR>"; }
+    { key = "gI"; action = "<cmd>lua Snacks.picker.lsp_implementations()<CR>"; }
+    { key = "gd"; action = "<cmd>lua Snacks.picker.lsp_definitions()<CR>"; }
     { key = "gD"; lspBufAction = "declaration"; }
-    { key = "<leader>ds"; action = "<cmd>Telescope lsp_document_symbols<CR>"; options.desc = "Document symbols"; }
-    { key = "<leader>ws"; action = "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>"; options.desc = "Workspace symbols"; }
-    { key = "gt"; action = "<cmd>Telescope lsp_type_definitions<CR>"; }
+    { key = "<leader>ds"; action = "<cmd>lua Snacks.picker.lsp_symbols()<CR>"; options.desc = "Document symbols"; }
+    { key = "<leader>ws"; action = "<cmd>lua Snacks.picker.lsp_workspace_symbols()<CR>"; options.desc = "Workspace symbols"; }
+    { key = "gt"; action = "<cmd>lua Snacks.picker.lsp_type_definitions()<CR>"; }
     { key = "K"; lspBufAction = "hover"; }
   ];
   plugins.lsp = {
