@@ -7,3 +7,7 @@ result-*
 
 # Ignore automatically generated direnv output
 .direnv
+
+# Home Manager-generated Neovim symlinks
+config/nvim/init.lua
+config/nvim/queries/nix/injections.scm
