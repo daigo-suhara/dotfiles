@@ -27,6 +27,7 @@
       scope.enabled = true;
       terminal = {
         enabled = true;
+        win.position = "float";
         win.wo.winbar = "";
       };
       toggle.enabled = true;
