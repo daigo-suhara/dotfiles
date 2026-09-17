@@ -44,10 +44,10 @@
 
   homebrew = {
     enable = true;
-    onActivation.cleanup = "zap";
+    onActivation.cleanup = "none";
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
-    onActivation.extraFlags = [ "--force-cleanup" ];
+    onActivation.extraFlags = [ "--zap" "--force-cleanup" ];
     casks = [
       "font-cica"
       "autodesk-fusion"
