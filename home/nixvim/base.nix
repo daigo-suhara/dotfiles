@@ -7,7 +7,7 @@
   opts = {
     fileencoding = "utf-8"; swapfile = false; hidden = true; autochdir = true;
     clipboard = "unnamedplus"; cmdheight = 0; showcmd = true; laststatus = 0;
-    ruler = false;
+    fillchars = { stl = "─"; stlnc = "─"; }; statusline = "─"; ruler = false;
     hlsearch = false; incsearch = true; matchtime = 1; termguicolors = true;
     shiftwidth = 4; tabstop = 4; expandtab = true; autoindent = true; smartindent = true;
     number = true; cursorline = false; relativenumber = false; wrap = false;
@@ -19,8 +19,8 @@
   extraConfigVim = ''
     highlight Normal guibg=NONE ctermbg=NONE
     highlight NormalFloat guibg=NONE ctermbg=NONE
-    highlight StatusLine guibg=#58A6FF
-    highlight StatusLineNC guibg=#58A6FF
+    highlight StatusLine guifg=#58A6FF guibg=NONE
+    highlight StatusLineNC guifg=#58A6FF guibg=NONE
     highlight WinSeparator guifg=#58A6FF
     highlight VertSplit guifg=#58A6FF
     highlight FloatBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
@@ -35,8 +35,8 @@
     augroup NixvimBorders
       autocmd!
       autocmd ColorScheme * highlight! PmenuSel guifg=#FFFFFF guibg=#30363D ctermfg=White ctermbg=DarkGray
-      autocmd ColorScheme * highlight! StatusLine guibg=#58A6FF
-      autocmd ColorScheme * highlight! StatusLineNC guibg=#58A6FF
+      autocmd ColorScheme * highlight! StatusLine guifg=#58A6FF guibg=NONE
+      autocmd ColorScheme * highlight! StatusLineNC guifg=#58A6FF guibg=NONE
       autocmd ColorScheme * highlight! WinSeparator guifg=#58A6FF
       autocmd ColorScheme * highlight! VertSplit guifg=#58A6FF
       autocmd ColorScheme * highlight! FloatBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
