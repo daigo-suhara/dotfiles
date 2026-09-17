@@ -21,7 +21,7 @@
     { mode = [ "n" "t" ]; key = "<C-t>"; action = "<cmd>ToggleTerm<CR>"; }
     { mode = "n"; key = "<leader>t"; action = "<cmd>ToggleTerm direction=float<CR>"; }
     { mode = "n"; key = "<leader>lg"; action = "<cmd>LazyGit<CR>"; }
-    { mode = "n"; key = "<leader>ld"; action = "<cmd>TermExec cmd='lazydocker' direction=float<CR>"; }
+    { mode = "n"; key = "<leader>ld"; action = "<cmd>Lazydocker<CR>"; }
     { mode = "n"; key = "<leader>gh"; action = "<cmd>TermExec cmd='gh-dash; exit' direction=float<CR>"; }
     { mode = "n"; key = "-"; action = "<cmd>Oil<CR>"; }
     { mode = "n"; key = "<leader>ff"; action = "<cmd>Telescope find_files<CR>"; }
