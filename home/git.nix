@@ -4,6 +4,7 @@
   programs.delta = {
     enable = true;
     enableGitIntegration = true;
+    options.side-by-side = true;
   };
 
   programs.git = {
@@ -22,6 +23,7 @@
         template = "~/.gitmessage";
       };
       format.signOff = true;
+      pull.rebase = true;
       color.ui = true;
     };
   };
