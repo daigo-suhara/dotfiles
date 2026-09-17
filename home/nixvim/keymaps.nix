@@ -25,6 +25,7 @@
     { mode = "n"; key = "<leader>gi"; action = "<cmd>Octo issue list<CR>"; options.desc = "GitHub issues"; }
     { mode = "n"; key = "<leader>gn"; action = "<cmd>Octo issue create<CR>"; options.desc = "New GitHub issue"; }
     { mode = "n"; key = "<leader>gp"; action = "<cmd>Octo pr list<CR>"; options.desc = "GitHub pull requests"; }
+    { mode = [ "n" "x" ]; key = "<leader>gb"; action = "<cmd>lua Snacks.gitbrowse()<CR>"; options.desc = "Git browse"; }
     { mode = "n"; key = "<leader>e"; action = "<cmd>lua Snacks.explorer()<CR>"; options.desc = "File explorer"; }
     { mode = "n"; key = "<leader>ff"; action = "<cmd>lua Snacks.picker.files()<CR>"; options.desc = "Files"; }
     { mode = "n"; key = "<leader>fr"; action = "<cmd>lua Snacks.picker.recent()<CR>"; options.desc = "Recent files"; }
