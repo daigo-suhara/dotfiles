@@ -4,9 +4,7 @@
   imports = [
     ./cmp.nix
     ./treesitter.nix
-    ./telescope.nix
     ./snacks.nix
-    ./toggleterm.nix
     ./hop.nix
     ./conform.nix
     ./git.nix

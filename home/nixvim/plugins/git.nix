@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   plugins = {
@@ -8,7 +8,4 @@
       settings.picker = "snacks";
     };
   };
-
-  extraPlugins = [ pkgs.vimPlugins.lazydocker-nvim ];
-  extraConfigLua = "require('lazydocker').setup()";
 }
