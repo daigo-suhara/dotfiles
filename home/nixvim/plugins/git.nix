@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  plugins.gitsigns.enable = true;
+  plugins = {
+    gitsigns.enable = true;
+    lazygit.enable = true;
+  };
 }
