@@ -19,8 +19,8 @@
   extraConfigVim = ''
     highlight Normal guibg=NONE ctermbg=NONE
     highlight NormalFloat guibg=NONE ctermbg=NONE
-    highlight StatusLine guibg=#30363D
-    highlight StatusLineNC guibg=#30363D
+    highlight StatusLine guibg=#58A6FF
+    highlight StatusLineNC guibg=#58A6FF
     highlight FloatBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
     highlight TelescopeBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
     highlight TelescopePromptBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
@@ -33,8 +33,8 @@
     augroup NixvimBorders
       autocmd!
       autocmd ColorScheme * highlight! PmenuSel guifg=#FFFFFF guibg=#30363D ctermfg=White ctermbg=DarkGray
-      autocmd ColorScheme * highlight! StatusLine guibg=#30363D
-      autocmd ColorScheme * highlight! StatusLineNC guibg=#30363D
+      autocmd ColorScheme * highlight! StatusLine guibg=#58A6FF
+      autocmd ColorScheme * highlight! StatusLineNC guibg=#58A6FF
       autocmd ColorScheme * highlight! FloatBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
       autocmd ColorScheme * highlight! TelescopeBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
       autocmd ColorScheme * highlight! TelescopePromptBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
