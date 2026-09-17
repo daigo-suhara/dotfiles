@@ -19,7 +19,7 @@
   extraConfigVim = ''
     highlight Normal guibg=NONE ctermbg=NONE
     highlight NormalFloat guibg=NONE ctermbg=NONE
-    highlight FloatBorder guifg=#A5D6FF
+    highlight FloatBorder guifg=#58A6FF
     highlight WinSeparator guifg=#58A6FF
     highlight VertSplit guifg=#58A6FF
     function! s:link_float_borders() abort
@@ -31,7 +31,7 @@
     augroup NixvimBorders
       autocmd!
       autocmd ColorScheme * highlight! PmenuSel guifg=#FFFFFF guibg=#30363D ctermfg=White ctermbg=DarkGray
-      autocmd ColorScheme * highlight! FloatBorder guifg=#A5D6FF
+      autocmd ColorScheme * highlight! FloatBorder guifg=#58A6FF
       autocmd ColorScheme * highlight! WinSeparator guifg=#58A6FF
       autocmd ColorScheme * highlight! VertSplit guifg=#58A6FF
       autocmd ColorScheme * call s:link_float_borders()
