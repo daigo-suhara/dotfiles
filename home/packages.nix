@@ -49,7 +49,6 @@
 
     # Terminal utilities
     bat
-    delta
     btop
     gping
     yazi

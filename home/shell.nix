@@ -23,6 +23,7 @@
     shellAliases = {
       ls = "eza";
       cat = "bat";
+      grep = "rg";
       top = "btop";
       ping = "gping";
       lg = "lazygit";
