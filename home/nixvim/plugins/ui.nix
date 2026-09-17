@@ -3,7 +3,6 @@
 {
   plugins = {
     web-devicons.enable = true;
-    lualine.enable = true;
     which-key = {
       enable = true;
       settings = {
