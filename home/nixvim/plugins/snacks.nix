@@ -6,14 +6,8 @@
     settings = {
       dashboard = {
         enabled = true;
-        preset.keys = [
-          { icon = " "; key = "f"; desc = "Find files"; action = "<leader>ff"; }
-          { icon = " "; key = "e"; desc = "Explorer"; action = "<leader>e"; }
-          { icon = " "; key = "q"; desc = "Quit"; action = ":qa"; }
-        ];
         sections = [
           { section = "header"; }
-          { section = "keys"; gap = 1; padding = 1; }
         ];
       };
       explorer = {
