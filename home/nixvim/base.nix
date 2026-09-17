@@ -7,7 +7,7 @@
   opts = {
     fileencoding = "utf-8"; swapfile = false; hidden = true; autochdir = true;
     clipboard = "unnamedplus"; cmdheight = 0; showcmd = true; laststatus = 0;
-    fillchars = { stl = "─"; stlnc = "─"; }; ruler = false;
+    fillchars = { stl = "─"; stlnc = "─"; }; statusline = " "; ruler = false;
     hlsearch = false; incsearch = true; matchtime = 1; termguicolors = true;
     shiftwidth = 4; tabstop = 4; expandtab = true; autoindent = true; smartindent = true;
     number = true; cursorline = false; relativenumber = false; wrap = false;

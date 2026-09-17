@@ -25,7 +25,10 @@
       };
       scroll.enabled = true;
       scope.enabled = true;
-      terminal.enabled = true;
+      terminal = {
+        enabled = true;
+        win.wo.winbar = "";
+      };
       toggle.enabled = true;
     };
   };
