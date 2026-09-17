@@ -21,6 +21,8 @@
     highlight NormalFloat guibg=NONE ctermbg=NONE
     highlight StatusLine guibg=#58A6FF
     highlight StatusLineNC guibg=#58A6FF
+    highlight WinSeparator guifg=#58A6FF
+    highlight VertSplit guifg=#58A6FF
     highlight FloatBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
     highlight TelescopeBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
     highlight TelescopePromptBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
@@ -35,6 +37,8 @@
       autocmd ColorScheme * highlight! PmenuSel guifg=#FFFFFF guibg=#30363D ctermfg=White ctermbg=DarkGray
       autocmd ColorScheme * highlight! StatusLine guibg=#58A6FF
       autocmd ColorScheme * highlight! StatusLineNC guibg=#58A6FF
+      autocmd ColorScheme * highlight! WinSeparator guifg=#58A6FF
+      autocmd ColorScheme * highlight! VertSplit guifg=#58A6FF
       autocmd ColorScheme * highlight! FloatBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
       autocmd ColorScheme * highlight! TelescopeBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
       autocmd ColorScheme * highlight! TelescopePromptBorder guifg=#A5D6FF guibg=NONE ctermfg=LightBlue ctermbg=NONE
