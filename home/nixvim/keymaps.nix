@@ -20,10 +20,11 @@
     { mode = [ "n" "t" ]; key = "<C-l>"; action = "<cmd>wincmd l<CR>"; }
     { mode = [ "n" "t" ]; key = "<C-t>"; action = "<cmd>ToggleTerm<CR>"; }
     { mode = "n"; key = "<leader>t"; action = "<cmd>ToggleTerm direction=float<CR>"; }
-    { mode = "n"; key = "<leader>lg"; action = "<cmd>LazyGit<CR>"; }
     { mode = "n"; key = "<leader>ld"; action = "<cmd>lua require('lazydocker').toggle()<CR>"; }
-    { mode = "n"; key = "<leader>gh"; action = "<cmd>TermExec cmd='gh-dash; exit' direction=float<CR>"; }
-    { mode = "n"; key = "-"; action = "<cmd>Oil<CR>"; }
+    { mode = "n"; key = "<leader>gi"; action = "<cmd>Octo issue list<CR>"; options.desc = "GitHub issues"; }
+    { mode = "n"; key = "<leader>gn"; action = "<cmd>Octo issue create<CR>"; options.desc = "New GitHub issue"; }
+    { mode = "n"; key = "<leader>gp"; action = "<cmd>Octo pr list<CR>"; options.desc = "GitHub pull requests"; }
+    { mode = "n"; key = "<leader>e"; action = "<cmd>lua Snacks.explorer()<CR>"; options.desc = "File explorer"; }
     { mode = "n"; key = "<leader>ff"; action = "<cmd>Telescope find_files<CR>"; }
     { mode = "n"; key = "<leader>fr"; action = "<cmd>Telescope oldfiles<CR>"; }
     { mode = "n"; key = "<leader>fb"; action = "<cmd>Telescope buffers<CR>"; }

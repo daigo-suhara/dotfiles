@@ -5,7 +5,7 @@
     ./cmp.nix
     ./treesitter.nix
     ./telescope.nix
-    ./oil.nix
+    ./snacks.nix
     ./toggleterm.nix
     ./hop.nix
     ./conform.nix

@@ -13,7 +13,6 @@
     jq
     git
     gh
-    gh-dash
 
     # Containers
     docker-compose

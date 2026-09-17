@@ -3,7 +3,10 @@
 {
   plugins = {
     gitsigns.enable = true;
-    lazygit.enable = true;
+    octo = {
+      enable = true;
+      settings.picker = "snacks";
+    };
   };
 
   extraPlugins = [ pkgs.vimPlugins.lazydocker-nvim ];
