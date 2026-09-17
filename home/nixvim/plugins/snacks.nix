@@ -24,6 +24,7 @@
         sources.explorer.layout.layout.position = "right";
       };
       scroll.enabled = true;
+      scope.enabled = true;
       terminal.enabled = true;
       toggle.enabled = true;
     };
