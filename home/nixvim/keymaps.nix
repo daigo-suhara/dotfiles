@@ -7,7 +7,7 @@
     { mode = "i"; key = "jj"; action = "<Esc>"; options.silent = true; }
     { mode = "n"; key = "<leader>nh"; action = ":nohl<CR>"; options.desc = "Clear search highlights"; }
     { mode = "n"; key = "<leader>w"; action = ":wq<CR>"; options.desc = "Save and exit"; }
-    { mode = "n"; key = "q"; action = ":q<CR>"; options.desc = "Exit"; }
+    { mode = "n"; key = "<leader>q"; action = ":qa<CR>"; options.desc = "Quit Neovim"; }
     { mode = "n"; key = "<S-j>"; action = "<C-d>"; }
     { mode = "n"; key = "<S-k>"; action = "<C-u>"; }
     { mode = "n"; key = "<leader>sv"; action = "<C-w>v"; options.desc = "Split vertically"; }
@@ -26,6 +26,7 @@
     { mode = "n"; key = "<leader>gn"; action = "<cmd>Octo issue create<CR>"; options.desc = "New GitHub issue"; }
     { mode = "n"; key = "<leader>gp"; action = "<cmd>Octo pr list<CR>"; options.desc = "GitHub pull requests"; }
     { mode = [ "n" "x" ]; key = "<leader>gb"; action = "<cmd>lua Snacks.gitbrowse()<CR>"; options.desc = "Git browse"; }
+    { mode = "n"; key = "<leader>dv"; action = "<cmd>DapViewOpen<CR>"; options.desc = "Debug view"; }
     { mode = "n"; key = "<leader>e"; action = "<cmd>lua Snacks.explorer()<CR>"; options.desc = "File explorer"; }
     { mode = "n"; key = "<leader>ff"; action = "<cmd>lua Snacks.picker.files()<CR>"; options.desc = "Files"; }
     { mode = "n"; key = "<leader>fr"; action = "<cmd>lua Snacks.picker.recent()<CR>"; options.desc = "Recent files"; }
