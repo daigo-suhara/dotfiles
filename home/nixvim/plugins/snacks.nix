@@ -8,6 +8,13 @@
         enabled = true;
         sections = [
           { section = "header"; }
+          {
+            icon = " ";
+            title = "Projects";
+            section = "projects";
+            indent = 2;
+            padding = 1;
+          }
         ];
       };
       explorer = {
