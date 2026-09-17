@@ -30,6 +30,7 @@
         win.border = "rounded";
         win.position = "float";
         win.wo.winbar = "";
+        win.wo.winhighlight = "FloatBorder:WinSeparator";
       };
       toggle.enabled = true;
     };
