@@ -27,6 +27,7 @@
       scope.enabled = true;
       terminal = {
         enabled = true;
+        win.border = "rounded";
         win.position = "float";
         win.wo.winbar = "";
       };
