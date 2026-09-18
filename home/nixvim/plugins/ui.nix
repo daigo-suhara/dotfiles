@@ -2,6 +2,7 @@
 
 {
   plugins = {
+    bufferline.enable = true;
     web-devicons.enable = true;
     which-key = {
       enable = true;
