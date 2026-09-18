@@ -8,7 +8,8 @@
       settings = {
         triggers = [ { __unkeyed-1 = "<auto>"; mode = "n"; } ];
         spec = [
-          { __unkeyed-1 = "<leader>d"; group = "Document"; }
+          { __unkeyed-1 = "<leader>c"; group = "Code"; }
+          { __unkeyed-1 = "<leader>d"; group = "Document / Debug"; }
           { __unkeyed-1 = "<leader>f"; group = "Find"; }
           { __unkeyed-1 = "<leader>g"; group = "GitHub"; }
           { __unkeyed-1 = "<leader>l"; group = "Tools"; }

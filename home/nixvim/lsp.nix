@@ -2,15 +2,17 @@
 
 {
   lsp.keymaps = [
-    { key = "<leader>rn"; lspBufAction = "rename"; options.desc = "Rename symbol"; }
-    { key = "gr"; action = "<cmd>lua Snacks.picker.lsp_references()<CR>"; }
-    { key = "gI"; action = "<cmd>lua Snacks.picker.lsp_implementations()<CR>"; }
-    { key = "gd"; action = "<cmd>lua Snacks.picker.lsp_definitions()<CR>"; }
-    { key = "gD"; lspBufAction = "declaration"; }
-    { key = "<leader>ds"; action = "<cmd>lua Snacks.picker.lsp_symbols()<CR>"; options.desc = "Document symbols"; }
-    { key = "<leader>ws"; action = "<cmd>lua Snacks.picker.lsp_workspace_symbols()<CR>"; options.desc = "Workspace symbols"; }
-    { key = "gt"; action = "<cmd>lua Snacks.picker.lsp_type_definitions()<CR>"; }
-    { key = "K"; lspBufAction = "hover"; }
+    { key = "<leader>ca"; lspBufAction = "code_action"; options.desc = "Code action"; }
+    { key = "<leader>cr"; lspBufAction = "rename"; options.desc = "Rename symbol"; }
+    { key = "<leader>cd"; action = "<cmd>lua Snacks.picker.lsp_definitions()<CR>"; options.desc = "Definitions"; }
+    { key = "<leader>cD"; lspBufAction = "declaration"; options.desc = "Declaration"; }
+    { key = "<leader>ci"; action = "<cmd>lua Snacks.picker.lsp_implementations()<CR>"; options.desc = "Implementations"; }
+    { key = "<leader>cR"; action = "<cmd>lua Snacks.picker.lsp_references()<CR>"; options.desc = "References"; }
+    { key = "<leader>ct"; action = "<cmd>lua Snacks.picker.lsp_type_definitions()<CR>"; options.desc = "Type definitions"; }
+    { key = "<leader>cs"; action = "<cmd>lua Snacks.picker.lsp_symbols()<CR>"; options.desc = "Document symbols"; }
+    { key = "<leader>cS"; action = "<cmd>lua Snacks.picker.lsp_workspace_symbols()<CR>"; options.desc = "Workspace symbols"; }
+    { key = "<leader>ch"; lspBufAction = "hover"; options.desc = "Hover"; }
+    { key = "<leader>cT"; action = "<cmd>lua require('neotest').run.run(vim.fn.getcwd())<CR>"; options.desc = "Run tests"; }
   ];
   plugins.lsp = {
     enable = true;

@@ -19,7 +19,12 @@
       };
       gitbrowse.enabled = true;
       image.enabled = true;
-      indent.enabled = true;
+      indent = {
+        enabled = true;
+        indent.char = "┊";
+        scope.enabled = false;
+        animate.enabled = false;
+      };
       input.enabled = true;
       notifier.enabled = true;
       picker = {
