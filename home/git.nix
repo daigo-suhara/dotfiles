@@ -12,7 +12,11 @@
 
   programs.git = {
     enable = true;
-    signing.format = null;
+    signing = {
+      format = "ssh";
+      key = "~/.ssh/id_ed25519.pub";
+      signByDefault = true;
+    };
     settings = {
       user = {
         name = user.userfullname;
