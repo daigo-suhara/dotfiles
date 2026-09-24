@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  extraPlugins = [ pkgs.vimPlugins.nvim-dap-view ];
+  extraPlugins = with pkgs.vimPlugins; [ nvim-dap-view nvim-nio ];
 
   plugins = {
     dap.enable = true;

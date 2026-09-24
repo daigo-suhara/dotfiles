@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   plugins = {
@@ -13,8 +13,8 @@
           "<C-Space>" = "cmp.mapping.complete()";
           "<C-e>" = "cmp.mapping.abort()";
           "<CR>" = "cmp.mapping.confirm({ select = false })";
-          "<Tab>" = "cmp.mapping.select_next_item()";
-          "<S-Tab>" = "cmp.mapping.select_prev_item()";
+          "<Tab>" = lib.nixvim.mkRaw ''cmp.mapping(function(fallback) if not require("luasnip").jump(1) then fallback() end end, { "i", "s" })'';
+          "<S-Tab>" = lib.nixvim.mkRaw ''cmp.mapping(function(fallback) if not require("luasnip").jump(-1) then fallback() end end, { "i", "s" })'';
         };
         completion.completeopt = "menu,menuone,preview,noselect";
         window.completion = { border = "rounded"; winhighlight = "Normal:CmpNormal,CursorLine:PmenuSel,Search:None"; };
