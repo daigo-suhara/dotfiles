@@ -1,4 +1,4 @@
-{ config, user, ... }:
+{ user, ... }:
 
 {
   programs.delta = {
@@ -26,14 +26,9 @@
         autocrlf = false;
         filemode = false;
       };
-      commit = {
-        template = "~/.gitmessage";
-      };
       format.signOff = true;
       pull.rebase = true;
       color.ui = true;
     };
   };
-
-  home.file.".gitmessage".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.gitmessage";
 }

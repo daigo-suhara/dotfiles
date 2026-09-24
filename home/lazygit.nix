@@ -10,6 +10,7 @@
         showFileIcons = true;
       };
       git.pagers = [ { pager = "delta --paging=never"; } ];
+      git.commit.signOff = true;
       customCommands = [
         {
           key = "c";
@@ -45,7 +46,7 @@
               key = "Summary";
             }
           ];
-          command = ''sh -c 'if [ -n "{{.Form.Scope}}" ]; then git commit -m "{{.Form.Type}}({{.Form.Scope}}): {{.Form.Summary}}"; else git commit -m "{{.Form.Type}}: {{.Form.Summary}}"; fi' '';
+          command = ''sh -c 'if [ -n "{{.Form.Scope}}" ]; then git commit -s -m "{{.Form.Type}}({{.Form.Scope}}): {{.Form.Summary}}"; else git commit -s -m "{{.Form.Type}}: {{.Form.Summary}}"; fi' '';
         }
       ];
     };
