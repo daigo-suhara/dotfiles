@@ -38,7 +38,6 @@
 
     # Terminal and tools
     { mode = [ "n" "t" ]; key = "<C-t>"; action = "<cmd>lua Snacks.terminal.toggle()<CR>"; }
-    { mode = "n"; key = "<leader>t"; action = "<cmd>lua Snacks.terminal.toggle()<CR>"; options.desc = "Terminal"; }
     { mode = "n"; key = "<leader>lg"; action = "<cmd>lua Snacks.terminal.toggle('lazygit')<CR>"; options.desc = "Lazygit"; }
     { mode = "n"; key = "<leader>ld"; action = "<cmd>lua Snacks.terminal.toggle('lazydocker')<CR>"; options.desc = "Lazydocker"; }
 
@@ -48,7 +47,15 @@
     { mode = "n"; key = "<leader>gp"; action = "<cmd>Octo pr list<CR>"; options.desc = "GitHub pull requests"; }
     { mode = [ "n" "x" ]; key = "<leader>gb"; action = "<cmd>lua Snacks.gitbrowse()<CR>"; options.desc = "Git browse"; }
 
-    # Debugging
+    # Testing and debugging
+    { mode = "n"; key = "<leader>tn"; action = "<cmd>lua require('neotest').run.run()<CR>"; options.desc = "Test nearest"; }
+    { mode = "n"; key = "<leader>tf"; action = "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>"; options.desc = "Test file"; }
+    { mode = "n"; key = "<leader>tt"; action = "<cmd>lua require('neotest').run.run(vim.fn.getcwd()); require('neotest').summary.open()<CR>"; options.desc = "Test suite"; }
+    { mode = "n"; key = "<leader>tl"; action = "<cmd>lua require('neotest').run.run_last()<CR>"; options.desc = "Test last"; }
+    { mode = "n"; key = "<leader>to"; action = "<cmd>lua require('neotest').output.open({ enter = true })<CR>"; options.desc = "Test output"; }
+    { mode = "n"; key = "<leader>ts"; action = "<cmd>lua require('neotest').summary.toggle()<CR>"; options.desc = "Test summary"; }
+    { mode = "n"; key = "<leader>tc"; action = "<cmd>Coverage<CR>"; options.desc = "Show coverage"; }
+    { mode = "n"; key = "<leader>tC"; action = "<cmd>CoverageClear<CR>"; options.desc = "Clear coverage"; }
     { mode = "n"; key = "<leader>dv"; action = "<cmd>DapViewOpen<CR>"; options.desc = "Debug view"; }
 
     # Terminal mode

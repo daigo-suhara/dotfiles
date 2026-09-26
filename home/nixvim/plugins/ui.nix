@@ -2,7 +2,13 @@
 
 {
   plugins = {
-    bufferline.enable = true;
+    bufferline = {
+      enable = true;
+      settings.options = {
+        show_buffer_close_icons = false;
+        show_close_icon = false;
+      };
+    };
     web-devicons.enable = true;
     which-key = {
       enable = true;
@@ -28,6 +34,5 @@
       };
     };
     colorizer = { enable = true; settings.user_default_options = { RGB = true; RRGGBB = true; names = false; RRGGBBAA = false; rgb_fn = false; hsl_fn = false; css = false; css_fn = false; mode = "background"; }; };
-    transparent = { enable = true; settings = { groups = [ "Normal" "NormalNC" "Comment" "Constant" "Special" "Identifier" "Statement" "PreProc" "Type" "Underlined" "Todo" "String" "Function" "Conditional" "Repeat" "Operator" "Structure" "LineNr" "NonText" "SignColumn" "CursorLine" "CursorLineNr" "EndOfBuffer" "BufferLineFill" "BufferLineBackground" ]; extra_groups = [ "NormalFloat" "FloatBorder" "Pmenu" "CmpNormal" "TermNormal" "TermNormalNC" ]; }; };
   };
 }

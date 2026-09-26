@@ -12,7 +12,6 @@
     { key = "<leader>cs"; action = "<cmd>lua Snacks.picker.lsp_symbols()<CR>"; options.desc = "Document symbols"; }
     { key = "<leader>cS"; action = "<cmd>lua Snacks.picker.lsp_workspace_symbols()<CR>"; options.desc = "Workspace symbols"; }
     { key = "<leader>ch"; lspBufAction = "hover"; options.desc = "Hover"; }
-    { key = "<leader>cT"; action = "<cmd>lua require('neotest').run.run(vim.fn.getcwd()); require('neotest').summary.open()<CR>"; options.desc = "Run tests"; }
   ];
   plugins.lsp = {
     enable = true;
