@@ -5,6 +5,15 @@
     cmp = {
       enable = true;
       autoEnableSources = true;
+      cmdline.":" = {
+        mapping = lib.nixvim.mkRaw ''
+          cmp.mapping.preset.cmdline({
+            ["<C-j>"] = cmp.mapping.select_next_item(),
+            ["<C-k>"] = cmp.mapping.select_prev_item(),
+          })
+        '';
+        sources = [ { name = "path"; } { name = "cmdline"; } ];
+      };
       settings = {
         sources = [ { name = "nvim_lsp"; } { name = "luasnip"; } { name = "buffer"; } { name = "path"; } ];
         mapping = {

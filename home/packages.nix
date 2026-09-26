@@ -17,6 +17,7 @@
     # Containers
     docker-compose
     lazydocker
+    lazysql
     devpod
     k9s
     kubectl

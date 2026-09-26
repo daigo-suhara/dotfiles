@@ -35,6 +35,7 @@
     { mode = "n"; key = "<leader>fs"; action = "<cmd>lua Snacks.picker.grep()<CR>"; options.desc = "Grep"; }
     { mode = "n"; key = "<leader>fc"; action = "<cmd>lua Snacks.picker.grep_word()<CR>"; options.desc = "Grep word"; }
     { mode = "n"; key = "<leader>r"; action = "<cmd>lua Snacks.picker.registers()<CR>"; options.desc = "Registers"; }
+    { mode = "n"; key = "<leader>mp"; action = "<cmd>Markview splitToggle<CR>"; options.desc = "Markdown preview"; }
 
     # Terminal and tools
     { mode = [ "n" "t" ]; key = "<C-t>"; action = "<cmd>lua Snacks.terminal.toggle()<CR>"; }

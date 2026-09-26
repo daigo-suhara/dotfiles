@@ -10,7 +10,7 @@
     fillchars = { stl = "─"; stlnc = "─"; }; statusline = " "; ruler = false;
     hlsearch = false; incsearch = true; matchtime = 1; termguicolors = true;
     shiftwidth = 4; tabstop = 4; expandtab = true; autoindent = true; smartindent = true;
-    number = true; cursorline = false; relativenumber = false; wrap = false;
+    number = true; cursorline = false; relativenumber = false; wrap = true;
     showtabline = 0; visualbell = true; showmatch = true; list = true; scrolloff = 15;
     winblend = 0; pumblend = 0; signcolumn = "yes"; winborder = "rounded";
   };

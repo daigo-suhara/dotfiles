@@ -28,6 +28,7 @@
       ping = "gping";
       lg = "lazygit";
       ld = "lazydocker";
+      lq = "lazysql";
       v = "nvim";
       reload = "exec $SHELL -l";
     };

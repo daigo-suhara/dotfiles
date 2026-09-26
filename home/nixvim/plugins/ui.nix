@@ -10,6 +10,13 @@
       };
     };
     web-devicons.enable = true;
+    noice = {
+      enable = true;
+      settings = {
+        popupmenu.backend = "cmp";
+        presets.command_palette = true;
+      };
+    };
     which-key = {
       enable = true;
       settings = {
