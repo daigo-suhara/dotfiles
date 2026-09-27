@@ -38,7 +38,7 @@
     { mode = "n"; key = "<leader>mp"; action = "<cmd>Markview splitToggle<CR>"; options.desc = "Markdown preview"; }
 
     # Terminal and tools
-    { mode = [ "n" "t" ]; key = "<C-t>"; action = "<cmd>lua Snacks.terminal.toggle()<CR>"; }
+    { mode = [ "n" "t" ]; key = "<C-/>"; action = "<cmd>lua Snacks.terminal.toggle()<CR>"; }
     { mode = "n"; key = "<leader>lg"; action = "<cmd>lua Snacks.terminal.toggle('lazygit')<CR>"; options.desc = "Lazygit"; }
     { mode = "n"; key = "<leader>ld"; action = "<cmd>lua Snacks.terminal.toggle('lazydocker')<CR>"; options.desc = "Lazydocker"; }
 
