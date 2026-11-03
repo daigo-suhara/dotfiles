@@ -59,6 +59,7 @@
       "adobe-creative-cloud"
       "docker-desktop"
       "codex"
+      "antigravity"
       "bambu-studio"
     ];
   };
