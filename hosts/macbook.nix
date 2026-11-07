@@ -86,6 +86,9 @@
     launchanim = true;
   };
 
+  # Mission Control: ディスプレイごとに個別の操作スペースを有効化
+  system.defaults.spaces.spans-displays = false;
+
   system.defaults.NSGlobalDomain = {
     ApplePressAndHoldEnabled = false;
     InitialKeyRepeat = 15;
