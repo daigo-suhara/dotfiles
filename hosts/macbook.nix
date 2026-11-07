@@ -59,6 +59,7 @@
       "docker-desktop"
       "codex"
       "antigravity"
+      "antigravity-cli"
       "bambu-studio"
     ];
   };
