@@ -56,7 +56,6 @@
       "slack"
       "discord"
       "visual-studio-code"
-      "adobe-creative-cloud"
       "docker-desktop"
       "codex"
       "antigravity"
