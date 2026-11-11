@@ -9,7 +9,7 @@
         nerdFontsVersion = "3";
         showFileIcons = true;
       };
-      git.pagers = [ { pager = "delta --paging=never"; } ];
+      git.diffRenderers = [ { command = "delta --paging=never"; } ];
       git.commit.signOff = true;
     };
   };
